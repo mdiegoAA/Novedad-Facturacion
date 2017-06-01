@@ -1,0 +1,48 @@
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\ModelContext.dll.config
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\ModelContext.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\ModelContext.pdb
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\EntityFramework.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\Helpers.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\Helpers.pdb
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\EntityFramework.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\obj\Debug\ModelContext.csprojResolveAssemblyReference.cache
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\obj\Debug\ModelContext.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\obj\Debug\ModelContext.pdb
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\Newtonsoft.Json.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\Newtonsoft.Json.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\Entidades.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Debug\Entidades.pdb
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\ModelContext.dll.config
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\ModelContext.dll
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\ModelContext.pdb
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\Entidades.dll
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\EntityFramework.dll
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\EntityFramework.SqlServer.dll
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\Helpers.dll
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\Newtonsoft.Json.dll
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\Entidades.pdb
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\Helpers.pdb
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\EntityFramework.xml
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\EntityFramework.SqlServer.xml
+E:\AmezquitaPropuestas\ModelContext\bin\Debug\Newtonsoft.Json.xml
+E:\AmezquitaPropuestas\ModelContext\obj\Debug\ModelContext.csprojResolveAssemblyReference.cache
+E:\AmezquitaPropuestas\ModelContext\obj\Debug\ModelContext.dll
+E:\AmezquitaPropuestas\ModelContext\obj\Debug\ModelContext.pdb
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\ModelContext.dll.config
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\ModelContext.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\ModelContext.pdb
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\Entidades.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\EntityFramework.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\EntityFramework.SqlServer.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\Helpers.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\Newtonsoft.Json.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\Entidades.pdb
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\Helpers.pdb
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\EntityFramework.xml
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\EntityFramework.SqlServer.xml
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Debug\Newtonsoft.Json.xml
+E:\20_04_17\AmezquitaPropuestas\ModelContext\obj\Debug\ModelContext.csprojResolveAssemblyReference.cache
+E:\20_04_17\AmezquitaPropuestas\ModelContext\obj\Debug\ModelContext.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\obj\Debug\ModelContext.pdb

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/css/admin-style.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery.form.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/ini.js"></script>
+</head>
+<body>
+
+
+
+    @if (ViewBag.Title == "Login")
+    {
+        <div class="container">
+
+            <div class="row">
+
+                @RenderBody()
+
+
+                </div>
+            </div>
+                }
+                else
+                {
+
+
+                <div class="container body-content">
+
+                    <div class="container">
+
+                     
+                        <div>
+                            @RenderBody()
+
+                        </div>
+
+
+
+
+                        <hr />
+                        <footer>
+                            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                        </footer>
+                    </div>
+
+                </div>
+
+                }
+               
+    </body>
+</html>

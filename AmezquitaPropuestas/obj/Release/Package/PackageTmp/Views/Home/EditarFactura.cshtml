@@ -1,0 +1,667 @@
+﻿@model Entidades.Factura
+@{
+
+
+    ViewBag.Title = "AgregarNovedadFactura";
+    List<ModelContext.ClientePropuesta> clientes = ViewBag.listadClientes;
+    List<ModelContext.Servicios> servicios = ViewBag.listadoServicios;
+    List<ModelContext.Usuarios> listadoDirectors = ViewBag.listadoDirectors;
+    List<ModelContext.Usuarios> listadoGerentes = ViewBag.listadoGerentes;
+
+    Layout = null;
+    ViewBag.Title = "obtenerFactura";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+<link href="~/css/admin-style.css" rel="stylesheet" />
+<script type="text/javascript" src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.form.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/ini.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+<script src="~/Scripts/EditarFactura.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-left well well-sm">
+                <a class="btn btn-primary" href='@Url.Action("Index", "Home")'>VOLVER</a>
+
+            </div>
+
+            @using (Html.BeginForm("guardarfACTURA", "Home", FormMethod.Post))
+            {
+
+
+
+
+                <table class="table table-bordered table-condensed ">
+                    <tr>
+                        <td colspan="6" style="text-align:center ; padding-top:5px"><b> FORMATO DE CREACION DE CLIENTE Y FACTURACION</b></td>
+                        <td rowspan="2" colspan="2"><img src="~/img/12.png" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="font-size:10px ; height:2% ;text-align:center">Fecha de actualizacion:11/03/2016</td>
+                        <td colspan="3" style="font-size:10px ;text-align:center">Version:02</td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="8">
+                            @Html.HiddenFor(x => x.facturaId, new { id = "facturaId" })
+                            @Html.HiddenFor(x => x.IdCliente, new { id = "idCliente" })
+                            @Html.HiddenFor(x => x.ServicioId, new { id = "ServicioId" })
+                            @Html.HiddenFor(x => x.nombreServicio, new { id = "tipoServicio" })
+                            @Html.HiddenFor(x => x.Sector, new { id = "tipoSector" })
+                            @Html.HiddenFor(x => x.Antiguedad, new { id = "antigueda" })
+                            @Html.HiddenFor(x => x.ManejoCuotaInicial, new { id = "ManejoCuotaInicial" })
+                            @Html.HiddenFor(x => x.PorcentajeCuotaInicial, new { id = "PorcentajeCuotaInicial" })
+                            @Html.HiddenFor(x => x.Gravado, new { id = "gravado" })
+                            @Html.HiddenFor(x => x.FacturacionMensual, new { id = "FacturaMensual" })
+                            @Html.HiddenFor(x => x.FechaEntregaFacturacion, new { id = "FechaEntregaFacturas" })
+                            @Html.HiddenFor(x => x.CondicionIniciarFacturacion, new { id = "CondicionIniciarFacturacion" })
+                            @Html.HiddenFor(x => x.nombreGerente, new { id = "IdGerenteaCargo" })
+                            @Html.HiddenFor(x => x.nombreDirector, new { id = "NombreDirector" })
+                            @Html.HiddenFor(x => x.facturaId, new { id = "FacturaId" })
+                            @Html.HiddenFor(x => x.FechaInicioContrato, new { id = "FechaInicioContrato" })
+                            @Html.HiddenFor(x => x.FechaFinalizacionContrato, new { id = "FechaFinalizacionContrato" })
+                            @Html.HiddenFor(x => x.TipoContribuyente, new { id = "TipoContribuyente" })
+
+
+                        </td>
+
+                    </tr>
+                    <tr style="height:10%">
+
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">FECHA CREACIÓN</td>
+                        <td colspan="2">
+                            <div class='input-group date' id=''>
+                                <input type="text" class="form-control" value="@Model.FechaDiligenciamiento.ToString("dd/MM/yyyy")" disabled="disabled" id="fecha" />
+
+                                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    var date = new Date();
+                                    //  date.setDate(date.getDate() - 1);
+                                    $('#datetimepicker7').datetimepicker({
+
+                                        format: 'YYYY-MM-DD',
+                                     
+                                      minDate: moment().add(0, 'days'),
+                                        //  maxDate: moment(), // Current day
+
+
+                                    });
+                                 
+
+                                });
+                            </script>
+
+                        </td>
+                        <td style="font-size:12px ;text-align:center ;padding-top:15px" colspan="2"><b>CONSECUTIVO</b></td>
+                        <td style="font-size:12px" colspan="2">
+                            <small>@Model.ConsecutivoControlTiempo</small>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="8"></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="8" style="background-color:black ;font-size:12px ; color:white ;text-align:center">DATOS DEL CLIENTE</td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size:12px;text-align:center;padding-top:15px">Razon Social</td>
+                        <td colspan="2">
+                            @Html.DropDownListFor(x => x.IdCliente, new SelectList(ViewBag.listadClientes, "ClienteID", "RazonSocial"), new { @class = "selectpicker", id = "SelectRazonSocial" })
+                        </td>
+                        <td style="font-size:12px; padding-top:15px ; text-align:center" colspan="2">NIT</td>
+
+                        <td colspan="2">
+
+                            <input disabled="disabled" type="text" class="form-control" value="@Model.Nit" id="NIT" />
+                        </td>
+                        @*<td style="text-align:center"><input type="text" class="form-control input-group-lg input-sm" id="dv" placeholder="D.V" /></td>*@
+
+
+                    </tr>
+                    <tr>
+                        <td style="font-size:12px; padding-top:15px ; text-align:center" colspan="2">DIRECCION</td>
+                        <td colspan="2"><input disabled="disabled" type="text" style="font-size:12px; padding-top:15px;" class="form-control" colspan="2" id="direccion" value="@Model.Direccion" /></td>
+                        <td style="font-size:12px;text-align:center;padding-top:15px" colspan="2">TIPO DE CONTRIBUYENTE</td>
+
+                        <td>
+                            <select id="SelectTipoContribuyente" class="selectpicker"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">TELEFONO</td>
+
+                        <td colspan="2"><input disabled="disabled" type="text" style="font-size:12px; padding-top:15px;" class="form-control" id="telefono" value="@Model.Telefono" /></td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">CELULAR</td>
+
+                        <td colspan="2"><input disabled="disabled" type="text" style="font-size:12px; padding-top:15px;" class="form-control" id="celular" value="@Model.celular" /></td>
+
+                    </tr>
+                    <tr>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">CONTACTO CLIENTE</td>
+
+                        <td colspan="2"><input disabled="disabled" type="text" style="font-size:12px; padding-top:15px;" class="form-control" id="ContactoCliente" value="@Model.ContactoCliente" /></td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">EMAIL CLIENTE</td>
+
+                        <td colspan="2"><input disabled="disabled" type="text" style="font-size:12px; padding-top:15px;" class="form-control" id="email" value="@Model.Email" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="8" style="background-color:black ;font-size:12px ; color:white; text-align:center">DATOS DE FACTURACION</td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="8"></td>
+
+                    </tr>
+                    <tr>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1">TIPO DE SERVICIO </td>
+                        <td colspan="1">
+                            @Html.DropDownListFor(x => x.ServicioId, new SelectList(ViewBag.listadoServicios, "ServicioId", "NombreServicio"), new { @class = "selectpicker", id = "SelectServicio" })
+
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">SECTOR </td>
+
+                        <td>
+                            <select id="SelectSector" class="selectpicker"></select>
+                        </td>
+
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1">CLIENTE </td>
+                        <td>
+                            <select id="selectAntiguedad" class="selectpicker"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="4"><b>NUMERO DE CONTRATO</b></td>
+                      
+                        <td colspan="4"><input type="text" style="font-size:12px; max-width:2000px" class="form-control" id="numeroContrato" value="@Model.numeroContrato" /></td>
+                      
+
+                    </tr>
+                    <tr>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1" rowspan="7">HONORARIOS </td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">Valor ANUAL SIN IVA </td>
+                        <td colspan="1"><input type="text" style="font-size:12px;" class="form-control" id="ValorAnualSinIva" value="@Model.ValorAnualSinIva" /></td>
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">MESES O CUOTAS DE EJECUCION </td>
+                        <td colspan="1"><input type="text" style="font-size:12px;" class="form-control" id="MesesCuotasEjecucion" value="@Model.MesesCuotasEjecucion" /></td>
+
+
+                    </tr>
+                    <tr>
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">MANEJA CUOTA INICIAL </td>
+
+                        <td style="font-size:12px" colspan="1">
+                            <select id="selectManejaCuotaInicial" class="selectpicker"></select>
+
+                        </td>
+
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">PORCENTAJE CUOTA INICIAL</td>
+                        <td style="font-size:12px" colspan="1">
+
+                            <select id="selectCuotaInicial" class="selectpicker"></select>
+
+
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1">VALOR CUOTA INICIAL</td>
+                        <td style="font-size:12px" colspan="2">
+                            <input type="text" style="font-size:12px;" class="form-control" id="ValorCuotaInicial" value="@Model.ValorCuotaInicial"/>
+                        </td>
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">VALOR CUOTAS MENSUALES</td>
+                        <td style="font-size:12px" colspan="1">
+                            <input type="text" style="font-size:12px;" class="form-control" id="ValorCoutasMensuales" value="@Model.ValorCoutasMensuales" />
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1">VALOR MENSUAL SIN IVA</td>
+                        <td style="font-size:12px" colspan="2">
+                            <input type="text" style="font-size:12px;" class="form-control" id="ValorMensualSinIva" value="@Model.ValorMensualSinIva" />
+                        </td>
+
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">GRAVADO</td>
+                        <td style="font-size:12px" colspan="1">
+                            <select id="SelectGravado" class="selectpicker"></select>
+
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td colspan="7"></td>
+
+                    </tr>
+                    <tr>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="3">VALOR TOTAL CONTRATO INCLUIDO IVA ANUAL</td>
+                        <td style="font-size:12px" colspan="3">
+                            <input type="text" style="font-size:12px;max-width:2000px" class="form-control" id="ValorTotalContratoIncluidoIvaAnual" value="@Model.ValorTotalContratoIncluidoIvaAnual" />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="8"></td>
+
+                    </tr>
+                    <tr>
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">FECHA INICIO DEL CONTRATO</td>
+                        <td colspan="2">
+                            <div class='input-group date' id='datetimepickers'>
+                             
+                               <input type="text" class="form-control"  value="@Model.FechaInicioContrato.ToString("yyyy-MM-dd 21:05")" id="fechaIniciosContrato" />
+
+                                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    var date = new Date();
+                                    //  date.setDate(date.getDate() - 1);
+                                    $('#datetimepickers').datetimepicker({
+
+                                        format: 'YYYY-MM-DD',
+
+                                       // minDate: moment().add(0, 'days'),
+                                        //  maxDate: moment(), // Current day
+
+
+                                    });
+                                });
+                            </script>
+
+
+                        </td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">FECHA DE FINALIZACION CONTRATO</td>
+                        <td colspan="2">
+                            <div class='input-group date' id='datetimepicker2'>
+                                <input type="text" class="form-control" value="@Model.FechaFinalizacionContrato.ToString("yyyy-MM-dd 21:05")" id="FechaFinalizacionContratos" />
+                      
+                                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+                            </div>
+                            <script type="text/javascript">
+                                                $(function () {
+                                                    var date = new Date();
+                                                  //  date.setDate(date.getDate() - 1);
+                                                    $('#datetimepicker2').datetimepicker({
+                                                        format: 'YYYY-MM-DD',
+
+                                                      //  minDate: moment().add(0, 'days'),
+                                                      //  maxDate: moment(), // Current day
+
+
+                                                    });
+                                                });
+                            </script>
+
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">FECHA DE INICIO DE FACTURACION</td>
+                        <td colspan="2" id="pruebbass">
+                            <div class='input-group date' id='datetimepicker3'>
+                                <input type="text" class="form-control" value="@Model.FechaInicioFacturacion.ToString("yyyy-MM-dd 21:05")" id="FechaInicioFacturacion" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+                            </div>
+                            <script type="text/javascript">
+                                                $(function () {
+                                                    var date = new Date();
+                                                  //  date.setDate(date.getDate() - 1);
+                                                    $('#datetimepicker3').datetimepicker({
+                                                        format: 'YYYY-MM-DD',
+
+                                                       // minDate: moment().add(0, 'days'),
+                                                      //  maxDate: moment(), // Current day
+
+
+                                                    });
+                                                });
+                            </script>
+
+                        </td>
+                        <td style="font-size:12px;text-align:center " colspan="2">FACTURACION MENSUAL</td>
+                        <td colspan="2">
+
+                            <select id="SelectFacturaMensual" style="max-width:2000px" class="selectpicker"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:12px ;text-align:center" colspan="4">FECHA DE ENTREGA DE FACTURACION</td>
+
+
+                        <td colspan="4">
+
+                            <select id="SelectFechaEntregaFactura" style="max-width:2000px" class="selectpicker  form-control"></select>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td style="font-size:12px;text-align:center" colspan="4">CONDICION PARA INICIAR LA FACTURACION</td>
+                        <td colspan="4">
+
+
+
+                            <select id="SelectCondicionInicialFacturacion" style="max-width:20000px" class="selectpicker  form-control"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:12px;text-align:center " colspan="8">TEXTO DE FACTURACION Y OBSERVACIONES:</td>
+
+                    </tr>
+                    <tr>
+
+                        <td colspan="8" WIDTH="100" rowspan="2">
+                            <input type="text" class="form-control" style="max-width:2000px" value="@Model.TextoFacturacionObservaciones" id="TextoFacturacionObservaciones" />
+
+                        </td>
+
+
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="8"></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="8" style="background-color:black ;font-size:12px ; text-align:center; color:white">HORAS ASIGNADAS AL CLIENTE</td>
+
+                    </tr>
+
+                    <tr class="">
+                        <td colspan="8"></td>
+
+                    </tr>
+
+                    <tr class="">
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="4">Cargo</td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2" id="horasAno">@Model.año</td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2" id="horasAnoProx">@Model.añoProx</td>
+
+                    </tr>
+                    <tr class="auditoria" id="AauditoriaError">
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="4">Asistente de auditoría</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="@Model.asistenteAuditoria" style="max-width:3000px" id="Aauditoria" onblur="sumatoria(this.value, 'AauditoriaError')" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="@Model.asistenteAuditoriaProx" style="max-width:3000px" id="AauditoriaProx" onblur="sumatoriaAprox(this.value, 'AauditoriaError')" class="form-control input-sm" /></td>
+
+                    </tr>
+                    <tr class="auditoria" id="AjuniorError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Auditor Junior</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="Ajunior" style="max-width:3000px" onblur="sumatoria(this.value, 'AjuniorError')" value="@Model.auditorJunior" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="AjuniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'AjuniorError')" value="@Model.auditorJuniorProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="AjuniorError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Auditor Semisenior</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="ASemisenior" style="max-width:3000px" onblur="sumatoria(this.value, 'Ajunior')" value="@Model.auditorSemisenior" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="ASemiseniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'Ajunior')" value="@Model.auditorSemiseniorProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="ASeniorError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Auditor Senior</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="ASenior" style="max-width:3000px" onblur="sumatoria(this.value, 'ASeniorError')" value="@Model.auditorSenior" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="ASeniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'ASeniorError')" value="@Model.auditorSeniorProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="SjuniorError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Supervisor Junior</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="Sjunior" style="max-width:3000px" onblur="sumatoria(this.value,'SjuniorError')" value="@Model.supervisoJunior" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="SjuniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'SjuniorError')" value="@Model.supervisoJuniorProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="SsemiseniorError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Supervisor Semisenior</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="Ssemisenior" style="max-width:3000px" onblur="sumatoria(this.value,'SsemiseniorError')" value="@Model.supervisoSemi" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="SsemiseniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'SsemiseniorError')" value="@Model.supervisoSemiProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="SseniorError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Supervisor Senior</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="Ssenior" style="max-width:3000px" onblur="sumatoria(this.value,'SseniorError')" value="@Model.supervisoSenior" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="SseniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'SseniorError')" value="@Model.supervisoSeniorProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="GJuniorError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente Junior</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GJunior" style="max-width:3000px" onblur="sumatoria(this.value,'GJuniorError')" value="@Model.gerenteJunior" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GJuniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'GJuniorError')" value="@Model.gerenteJuniorAprox" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="GSemiError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente Semisenior</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GSemi" style="max-width:3000px" onblur="sumatoria(this.value,'GSemiError')" value="@Model.gerenteSemi" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GSemiAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'GSemiError')" value="@Model.gerenteSemirAprox" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="GSeniorError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente Senior</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GSenior" style="max-width:3000px" onblur="sumatoria(this.value,'GSeniorError')" value="@Model.gerenteSenior" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GSeniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'GSeniorError')" value="@Model.gerenteSeniorAprox" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="DJuniorError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Director Junior</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="DJunior" style="max-width:3000px" onblur="sumatoria(this.value,'DJuniorError')" value="@Model.directorJunior" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="DJuniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'DJuniorError')" value="@Model.directorJuniorAprox" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="DSemiError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Director Semisenior</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="DSemi" style="max-width:3000px" onblur="sumatoria(this.value,'DSemiError')" value="@Model.directorSemi" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="DSemiAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'DSemiError')" value="@Model.directorSemirAprox" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="DSeniorError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Director Senior</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="@Model.directorSenior" style="max-width:3000px" id="DSenior" onblur="sumatoria(this.value,'DSeniorError')" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="@Model.directorSeniorAprox" style="max-width:3000px" id="DSeniorAprox" onblur="sumatoriaAprox(this.value, 'DSeniorError')" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria">
+                        <td style="font-size:14px;color:blue; padding-top:8px;text-align:center" colspan="4">Total Auditoría</td>
+                        <td style="font-size:14px;color:blue; padding-top:2px" colspan="2"><label id="vaueAuditoria">@(Convert.ToInt32(Model.totalHorasAuditoria) - Convert.ToInt32(Model.totalHorasAuditoriaProx) )</label></td>
+                        <td style="font-size:14px;color:blue; padding-top:2px" colspan="2"><label id="vaueAuditoriaAprox">@Model.totalHorasAuditoriaProx</label></td>
+                    </tr>
+                    <tr class="auditoria" id="GSeniorError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Auditor TI</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="AuditorTI" style="max-width:3000px" onblur="sumatoria(this.value, 'AuditorTIError')" value="@Model.auditorTI" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="AuditorTIAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'AuditorTIError')" value="@Model.auditoraTIProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="supervisorTIError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Supervisor TI</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="supervisorTI" style="max-width:3000px" onblur="sumatoria(this.value,'supervisorTIError')" value="@Model.SupervisorTI" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="supervisorTIAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'supervisorTIError')" value="@Model.SupervisorTIProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="GerenteTIError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente TI</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GerenteTI" style="max-width:3000px" onblur="sumatoria(this.value, 'GerenteTIError')" value="@Model.GerenteTI" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GerenteTIAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'GerenteTIError')" value="@Model.GerenteTIProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="AuditorImpuestoError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Auditor de impuestos</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="@Model.AuditorImpuesto" style="max-width:3000px" id="AuditorImpuesto" onblur="sumatoria(this.value, 'AuditorImpuestoError')" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="@Model.AuditorImpuestoProx" style="max-width:3000px" id="AuditorImpuestoAprox" onblur="sumatoriaAprox(this.value, 'AuditorImpuestoError')" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="GerenteImpuestoError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente de impuestos</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="@Model.GerenteImpuesto" style="max-width:3000px" id="Gerenteimpuestos" onblur="sumatoria(this.value, 'AuditorImpuestoError')" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="@Model.GerenteImpuestoProx" style="max-width:3000px" id="GerenteimpuestosAprox" onblur="sumatoriaAprox(this.value, 'AuditorImpuestoError')" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="AsesorJuridicoError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Asesor de juridico</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="@Model.AsesorJuridico" style="max-width:3000px" id="AsesorJuridico" onblur="sumatoria(this.value, 'AsesorJuridicoError')" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="@Model.AsesorJuridicoProx" style="max-width:3000px" id="AsesorJuridicoProx" onblur="sumatoriaAprox(this.value, 'AsesorJuridicoError')" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria" id="GJuridicoError">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente Jurídico</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GJuridico" style="max-width:3000px" onblur="sumatoria(this.value,'GJuridicoError')" value="@Model.GerenteJuridicio" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GJuridicoAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'GJuridicoError')" value="@Model.GerenteJuridicioProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="auditoria">
+                        <td style="font-size:14px;color:blue; padding-top:8px;text-align:center" colspan="4">Total Especialista</td>
+                        <td style="font-size:14px;color:blue; padding-top:4px" colspan="2"><label id="valueEx">@Model.totalHorasEsepcializadas</label></td>
+                        <td style="font-size:14px;color:blue; padding-top:4px" colspan="2"><label id="valueExAprox">@Model.totalHorasEsepcializadasProx</label></td>
+                    </tr>
+                    <tr class="auditoria">
+                        <td style="font-size:14px;color:blue; padding-top:8px;text-align:center" colspan="4">TOTAL</td>
+                        <td style="font-size:14px;color:blue; padding-top:4px" colspan="2"><label id="RsultTotales">@(Convert.ToInt32(Model.Total) - (Convert.ToInt32(Model.TotalAprox)))</label></td>
+                        <td style="font-size:14px;color:blue; padding-top:4px" colspan="2"><label id="RsultTotalAprox">@Model.TotalAprox</label></td>
+                    </tr>
+
+                    <tr class="out" id="OutGerente">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente </td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="OutGerenteval" style="max-width:3000px" onblur="sumatoriaOut(this.value, 'OutGerente')" value="@Model.GreneteOut" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="OutGerentevalAprox" style="max-width:3000px" onblur="sumatoriaOutProx(this.value, 'OutGerente')" value="@Model.GreneteOutProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="out" id="outSupervisor">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Supervisor </td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outSupervisorVal" style="max-width:3000px" onblur="sumatoriaOut(this.value, 'outSupervisor')"  value="@Model.supervisorOut"class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outSupervisorValProx" style="max-width:3000px" onblur="sumatoriaOutProx(this.value, 'outSupervisor')" value="@Model.supervisorOutProx"class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="out" id="outCordinador">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Cordinador </td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outcordinadorVal" style="max-width:3000px" onblur="sumatoriaOut(this.value, 'outCordinador')" value="@Model.CoordinadorOut" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outcordinadorValProx" style="max-width:3000px" onblur="sumatoriaOutProx(this.value, 'outCordinador')" value="@Model.CoordinadorOutProx"class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="out" id="outAnalista">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Analista</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outAnalistaVal" style="max-width:3000px" onblur="sumatoriaOut(this.value, 'outAnalista')" value="@Model.AnalistaOut" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outAnalistaValProx" style="max-width:3000px" onblur="sumatoriaOutProx(this.value, 'outAnalista')"  value="@Model.AnalistaOudProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="out" id="outAuxiliar">
+                        <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Auxiliar</td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outAuxiliarVal" style="max-width:3000px" onblur="sumatoriaOut(this.value, 'outAuxiliar')" value="@Model.AuxiliarOut" class="form-control input-sm" /></td>
+                        <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outAuxiliarValProx" style="max-width:3000px" onblur="sumatoriaOutProx(this.value, 'outAuxiliar')"  value="@Model.AuxiliarOutProx" class="form-control input-sm" /></td>
+                    </tr>
+                    <tr class="out">
+                        <td style="font-size:14px;color:blue; padding-top:8px;text-align:center" colspan="4">TOTAL</td>
+                        <td style="font-size:14px;color:blue; padding-top:4px" colspan="2"><label id="RsultTotalesOut" >@Model.rsultOut</label></td>
+                        <td style="font-size:14px;color:blue; padding-top:4px" colspan="2"><label id="RsultTotalAproxes">@Model.rsultOutProx</label></td>
+                    </tr>
+
+
+
+                    <tr>
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">GERENTE A CARGO</td>
+
+
+                        <td colspan="2">
+
+                       
+                            @Html.DropDownListFor(x => x.IdGerenteCargo, new SelectList(ViewBag.listadoGerentes, "UsuarioId", "Nombre"), new { @class = "selectpicker", id = "IdGerenteCargo" })
+
+
+                        </td>
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">DIRECTOR A CARGO</td>
+                        <td colspan="2">
+
+
+
+                            @Html.DropDownListFor(x => x.IdDirectorCargo, new SelectList(ViewBag.listadoDirectors, "UsuarioId", "Nombre"), new { @class = "selectpicker", id = "IdDirectorCargo" })
+
+
+
+                        </td>
+
+
+                    </tr>
+                    <tr>
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">VENTAS A CARGO DE</td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2"><input type="text" value="@Model.ventaCargo1" id="ventaCargo1" class="form-control input-group-lg input-sm" /></td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1">%</td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1"><input type="text" value="@Model.ProcentajeventaCargo1" id="ProcentajeventaCargo1" class="form-control input-group-lg input-sm" /></td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2" rowspan="5"></td>
+
+                    </tr>
+                    <tr>
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">VENTAS A CARGO DE</td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2"><input type="text"  value="@Model.ventaCargo2" id="ventaCargo2" class="form-control input-group-lg input-sm" /></td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1">%</td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1"><input type="text" value="@Model.ProcentajeventaCargo2" id="ProcentajeventaCargo2" class="form-control input-group-lg input-sm" /></td>
+
+
+                    </tr>
+                    <tr>
+
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">VENTAS A CARGO DE</td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2"><input type="text"  value="@Model.ventaCargo3" id="ventaCargo3" class="form-control input-group-lg input-sm" /></td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1">%</td>
+                        <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1"><input type="text"  value="@Model.ProcentajeventaCargo3" id="ProcentajeventaCargo3" class="form-control input-group-lg input-sm" /></td>
+
+
+                    </tr>
+                    <tr>
+
+                        <td style="font-size:12px ;padding-top:60px;text-align:center" height="25px" colspan="3" rowspan="2">VoBo Gerente General</td>
+
+                        <td style="font-size:12px ;padding-top:60px;text-align:center" height="25px" colspan="3" rowspan="2">VoBo Director Encargado</td>
+
+
+                    </tr>
+                </table>
+                    <div class="text-right well well-sm">
+                        <button type="button" id="guardarFactura" class="btn btn-primary">Editar Factura</button>
+                    </div>
+            }
+
+            <div class="modal fade" id="EdiatFactura" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Editar Factura Factura</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="comment">Observaciones:</label>
+                                <textarea style="min-width: 100%" class="form-control" rows="5" id="comment"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-primary" id="guardarFacturaF">Editar Factura</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+
+        </div>
+
+    </div>
+</div>
+
+
+

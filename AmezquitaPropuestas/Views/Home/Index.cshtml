@@ -1,0 +1,1795 @@
+﻿
+
+@model List<Entidades.FacturacionUsuario>
+@{
+
+    List<Entidades.FacturacionUsuario> listadoAsistenteGerencia = ViewBag.AsistenteGeneral;
+    List<Entidades.FacturacionUsuario> listadoAprobacionDirector = ViewBag.aprobacionDirector;
+    List<Entidades.FacturacionUsuario> listadoAprobacionGerenteGeneal = ViewBag.aprobacionGerenteGeneral;
+    List<Entidades.FacturacionUsuario> listadoAprobacionGerente = ViewBag.Gerente;
+    List<Entidades.FacturacionUsuario> listadoAreaEspecializada = ViewBag.AreaEspecializada;
+    List<Entidades.FacturacionUsuario> contabilidad = ViewBag.contabilidad;
+
+
+    Layout = null;
+    List<Entidades.FacturaAprobaciones> listadoAprobacion = ViewBag.Aprobacion;
+    int areas = 0;
+    string auxEstado = "";
+    string Modificar = "";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+<link href="~/css/admin-style.css" rel="stylesheet" />
+<script type="text/javascript" src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.form.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/ini.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css" />
+
+<script type="text/javascript" src="~/Scripts/jquery.dataTables.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.dataTables.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+
+
+
+<script type="text/javascript" src="~/Scripts/Index.js"></script>
+
+
+
+
+
+
+<div id="">
+  
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row" id="form">
+                            <div>
+                                <div class="col-md-8">
+                                    <a href="~/Home/AgregarNovedadFactura" class="btn btn-default btn-xs">Agregar Factura</a>
+                                </div>
+                                <div class="col-md-4 blockquote-reverse">
+                                    @ViewBag.nombre
+                                    <a href="~/Login/login" class="btn btn-success btn-xs">Salir</a>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <br />
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Borradores</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Aprobacion</a></li>
+                    @if (listadoAprobacionDirector.Count != 0 )
+                    {
+
+                        <li><a data-toggle="tab" href="#menu2">Por Aprobar</a></li>
+                    }
+                    @if (listadoAprobacionGerenteGeneal.Count != 0)
+                    {
+
+                        <li><a data-toggle="tab" href="#menu3">Aprobacion Gerente General</a></li>
+                    }
+
+                    @if (listadoAsistenteGerencia.Count != 0)
+                    {
+
+                        <li><a data-toggle="tab" href="#menu3">Asistente Gerente General</a></li>
+                    }
+                    @if (listadoAreaEspecializada.Count != 0)
+                    {
+
+                        <li><a data-toggle="tab" href="#menu4">Area Especializada</a></li>
+                    }
+
+                    @if (contabilidad.Count != 0)
+                    {
+
+                        <li><a data-toggle="tab" href="#menu5">Contabilidad</a></li>
+                    }
+
+
+
+
+
+                </ul>
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <table id="FacturasBorrador">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"></th>
+                                    <th class="text-center" style="width:300px"><small>GERENTE A CARGO</small>  </th>
+                                    <th class="text-center"><small>SERVICIO</small> </th>
+                                    <th class="text-center"><small>NOMBRE CLIENTE</small> </th>
+                                    <th class="text-center"><small> FECHA DE CREACION</small> </th>
+                                    <th class="text-center"><small>TI</small> </th>
+                                    <th class="text-center"><small>IMP</small></th>
+                                    <th class="text-center"><small>LEG</small> </th>
+                                    <th class="text-center"><small>FIN</small> </th>
+                                    <th class="text-center"><small>OUT</small> </th>                            
+                                    <th class="text-center"><small>Total Horas</small></th>
+                                    <th class="text-center"><small></small> </th>
+                                </tr>
+                            </thead>
+                            @{ int contador = 1;
+
+
+                            }
+
+                            <tbody>
+
+                                @foreach (var a in Model)
+                                {
+
+
+
+                                    if (a.Estado == "1")
+                                    {
+
+
+
+                                        <tr id="item_@(contador)">
+
+
+                                            <td class="text-center"><a onclick="modalMensajes('@a.FacturaId')" href="#"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                                            <td class="text-center"><small>@a.nombre</small></td>
+                                            <td class="text-center"><small>@a.Servicio</small> </td>
+                                            <td class="text-center"><small>@a.nombreCliente</small> </td>
+
+                                            <td class="text-center"><small>@a.FechaDiligenciamiento.ToString("dd/MM/yyyy")</small>  </td>
+
+
+                                            @if (a.estadoHorasIT == "1")
+                                            {
+
+                                                <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasTI</small> </a></td>
+
+                                            }
+                                            else
+                                            {
+
+                                                <td class="text-center"><a><small>@a.HorasTI</small> </a></td>
+
+                                            }
+                                            @if (a.estadoHorasImpuesto == "1")
+                                            {
+
+                                                <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasImpuestos</small> </a></td>
+
+                                            }
+                                            else
+                                            {
+
+                                                <td class="text-center"><a><small>@a.HorasImpuestos</small> </a></td>
+
+                                            }
+                                          
+
+
+                                            @if (a.estadoHorasLegal == "1")
+                                            {
+
+                                                <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasLegales</small> </a></td>
+
+                                            }
+                                            else
+                                            {
+
+                                                <td class="text-center"><a><small>@a.HorasLegales</small> </a></td>
+
+                                            }
+
+
+                                            <td class="text-center"><a><small>@a.HorasAuditoria</small></a></td>
+                                            <td class="text-center"><a><small>@a.HorasOutsorcing</small> </a></td>
+                                        
+
+
+                                            <td class="text-center"><a><small>@a.TotalHoras</small></a></td>
+                                            <td>
+
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Opciones <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href='@Url.Action("obtenerFactura", "Home", new { idFactura = a.FacturaId })'>Ver</a></li>
+                                                        <li><a href='@Url.Action("EditarFactura", "Home", new { idFactura = a.FacturaId })'>Editar</a></li>
+                                                        <li><a href="#" onclick="EliminarFactura('@a.FacturaId','@a.nombreCliente')">Eliminar</a></li>
+                                                       @*<li><a href='@Url.Action("ExportaPdf", "Home", new { idFactura = a.FacturaId  })'>Imprimir</a></li>*@
+                                                        <li role="separator" class="divider"></li>
+                                                        <li><a onclick="modificarEstado('@a.FacturaId','@contador')">Aprobar</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                    }
+
+                                    contador = contador + 1;
+
+                                }
+
+                            </tbody>
+
+
+
+                        </table>
+
+
+
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                        <table id="TableEstado">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"></th>
+                                    <th class="text-center" style="width:300px"><small>GERENTE A CARGO</small>  </th>
+                                    <th class="text-center"><small>SERVICIO</small> </th>
+                                    <th class="text-center"><small>NOMBRE CLIENTE</small> </th>
+                                    <th class="text-center"><small> FECHA DE CREACION</small> </th>
+                                    <th class="text-center"><small>TI</small> </th>
+                                    <th class="text-center"><small>IMP</small></th>
+                                    <th class="text-center"><small>LEG</small> </th>
+                                    <th class="text-center"><small>FIN</small> </th>
+                                    <th class="text-center"><small>OUT</small> </th>
+                                    <th class="text-center"><small>Estado</small> </th>
+                                    <th class="text-center"><small>Total Horas</small></th>
+                                    <th class="text-center"><small></small> </th>
+                                </tr>
+                            </thead>
+                          
+
+                            <tbody>
+
+                                @foreach (var a in listadoAprobacionGerente)
+                                {
+
+
+
+                                    if (a.Estado == "2")
+                                    {
+
+
+
+                                        <tr id="item_@(contador)">
+
+
+                                            <td class="text-center"><a onclick="modalMensajes('@a.FacturaId')" href="#"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                                            <td class="text-center"><small>@a.nombre</small></td>
+                                            <td class="text-center"><small>@a.Servicio</small> </td>
+                                            <td class="text-center"><small>@a.nombreCliente</small> </td>
+                                            <td class="text-center"><small>@a.FechaDiligenciamiento.ToString("dd/MM/yyyy")</small>  </td>
+
+
+                                            @if (a.estadoHorasIT == "1")
+                                            {
+
+                                                <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasTI</small> </a></td>
+
+                                            }
+                                            else
+                                            {
+
+                                                <td class="text-center"><a><small>@a.HorasTI</small> </a></td>
+
+                                            }
+                                            @if (a.estadoHorasImpuesto == "1")
+                                            {
+
+                                                <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasImpuestos</small> </a></td>
+
+                                            }
+                                            else
+                                            {
+
+                                                <td class="text-center"><a><small>@a.HorasImpuestos</small> </a></td>
+
+                                            }
+
+
+
+                                            @if (a.estadoHorasLegal == "1")
+                                            {
+
+                                                <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasLegales</small> </a></td>
+
+                                            }
+                                            else
+                                            {
+
+                                                <td class="text-center"><a><small>@a.HorasLegales</small> </a></td>
+
+                                            }
+
+
+                                            <td class="text-center"><a><small>@a.HorasAuditoria</small></a></td>
+                                            <td class="text-center"><a><small>@a.HorasOutsorcing</small> </a></td>
+                                            <td class="text-center">
+                                                @if (a.estadoContabilidadl == 1)
+                                                {<a style="color:green"><small><i class="fa fa-circle" aria-hidden="true"></i></small> </a>}
+                                                @if (a.estadoContabilidadl == 2)
+                                                {<a><small><i class="fa fa-check-circle-o" aria-hidden="true"></i></small> </a>}
+                                            @if(a.estadoDirector == 1)
+                                            {<a style="color:green"><small><i class="fa fa-circle" aria-hidden="true"></i></small> </a>}
+                                           @if (a.estadoDirector == 2)
+                                           {<a><small><i class="fa fa-check-circle-o" aria-hidden="true"></i></small> </a>}
+                                            @if (a.estadoGerenciaGeneral == 1)
+                                            {<a style="color:green"><small><i class="fa fa-circle" aria-hidden="true"></i></small> </a>}
+                                          @if (a.estadoGerenciaGeneral == 2)
+                                          {<a><small><i class="fa fa-check-circle-o" aria-hidden="true"></i></small> </a>}
+                                             @if (a.estadeAsistenteGerencia == 1)
+                                            {<a style="color:green"><small><i class="fa fa-circle" aria-hidden="true"></i></small> </a>}
+                                         @if (a.estadeAsistenteGerencia == 2)
+                                         {<a><small><i class="fa fa-check-circle-o" aria-hidden="true"></i></small> </a>}
+                                        </td>
+
+
+                                            <td class="text-center"><a><small>@a.TotalHoras</small></a></td>
+                                            <td>
+
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Opciones <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href='@Url.Action("obtenerFactura", "Home", new { idFactura = a.FacturaId })'>Ver</a></li>
+                                                     
+                                                        @*<li><a href='@Url.Action("ExportaPdf", "Home", new { idFactura = a.FacturaId  })'>Imprimir</a></li>*@
+                                                   
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                    }
+
+                                    contador = contador + 1;
+
+                                }
+
+                            </tbody>
+
+
+
+                        </table>
+
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                        @*@{ int contador = 1;
+
+
+                        }*@
+
+                        @if (listadoAprobacionDirector.Count > 0)
+
+                        {
+
+
+                            <table id="AprobacionDirector">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center"></th>
+                                        <th class="text-center"><small>GERENTE A CARGO</small>  </th>
+                                        <th class="text-center"><small>Cliente</small>  </th>
+                                        <th class="text-center"><small>SERVICIO</small> </th>
+                                        <th class="text-center"><small> FECHA DE CREACION</small> </th>
+                                        <th class="text-center"><small>TI</small> </th>
+                                        <th class="text-center"><small>IMP</small></th>
+                                        <th class="text-center"><small>LEG</small> </th>
+                                        <th class="text-center"><small>FIN</small> </th>
+                                        <th class="text-center"><small>OUT</small> </th>
+                                        <th class="text-center"><small>ESTADO</small> </th>
+
+                                        <th class="text-center"><small>Total Horas</small></th>
+                                        <th class="text-center"><small></small> </th>
+                                    </tr>
+                                </thead>
+                               
+
+                                <tbody>
+
+                                    @foreach (var a in listadoAprobacionDirector)
+                                    {
+
+
+
+                                        if (a.Estado == "2")
+                                        {
+
+
+
+                                            <tr id="item_@(contador)">
+
+
+                                                <td class="text-center"><a onclick="modalMensajes('@a.FacturaId')" href="#"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                                                <td class="text-center"><small>@a.nombre</small></td>
+                                                <td class="text-center"><small>@a.nombreCliente</small></td>
+                                                <td class="text-center"><small>@a.Servicio</small> </td>
+                                                <td class="text-center"><small>@a.FechaDiligenciamiento.ToString("dd/MM/yyyy")</small>  </td>
+
+
+                                                @if (a.estadoHorasIT == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasTI</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasTI</small> </a></td>
+
+                                                }
+                                                @if (a.estadoHorasImpuesto == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasImpuestos</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasImpuestos</small> </a></td>
+
+                                                }
+
+
+
+                                                @if (a.estadoHorasLegal == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasLegales</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasLegales</small> </a></td>
+
+                                                }
+
+
+                                                <td class="text-center"><a><small>@a.HorasAuditoria</small></a></td>
+                                                <td class="text-center"><a><small>@a.HorasOutsorcing</small> </a></td>
+
+                                                @if (@a.estadoDirector == 1)
+                                                {
+                                                    <td class="text-center"><a style="color:red" ><small>Pendiente</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a style="color:blue"><small>Aprobada</small> </a></td>
+
+                                                }
+
+                                            
+                                                <td class="text-center"><a><small>@a.TotalHoras</small></a></td>
+                                                <td>
+
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Opciones <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href='@Url.Action("obtenerFactura", "Home", new { idFactura = a.FacturaId })'>Ver</a></li>
+                                                          
+                                                           @* <li><a href='@Url.Action("ExportaPdf", "Home", new { idFactura = a.FacturaId  })'>Imprimir</a></li>*@
+                                                            @if (@a.estadoDirector == 1)
+                                                            {
+                                                            <li role="separator" class="divider"></li>
+                                                            <li><a href="#" onclick="AprobacionDirector('@a.FacturaId','@contador')">Aprobar Director</a></li>
+                                                            <li><a href="#" onclick="RechazarFactura('@a.FacturaId','@contador', 'Director' )">Rechazar Director</a></li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+                                        }
+
+                                        contador = contador + 1;
+
+                                    }
+
+                                </tbody>
+
+
+
+                            </table>
+
+                                    }
+                    </div>
+                    <div id="menu3" class="tab-pane fade">
+                        @*@{ int contador = 1;
+
+
+            }*@
+
+                        @if (listadoAprobacionGerenteGeneal.Count > 0)
+
+                        {
+
+
+                            <table id="AprobacionDirectorGeneral">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center"></th>
+                                        <th class="text-center"><small>GERENTE A CARGO</small>  </th>
+                                        <th class="text-center"><small>Cliente</small>  </th>
+                                        <th class="text-center"><small>SERVICIO</small> </th>
+                                        <th class="text-center"><small> FECHA DE CREACION</small> </th>
+                                        <th class="text-center"><small>TI</small> </th>
+                                        <th class="text-center"><small>IMP</small></th>
+                                        <th class="text-center"><small>LEG</small> </th>
+                                        <th class="text-center"><small>FIN</small> </th>
+                                        <th class="text-center"><small>OUT</small> </th>
+                                        <th class="text-center"><small>ESTADO</small> </th>
+
+                                        <th class="text-center"><small>Total Horas</small></th>
+                                        <th class="text-center"><small></small> </th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+
+                                    @foreach (var a in listadoAprobacionGerenteGeneal)
+                                    {
+
+
+
+                                        if (a.Estado == "2")
+                                        {
+
+
+
+                                            <tr id="item_@(contador)">
+
+
+                                                <td class="text-center"><a onclick="modalMensajes('@a.FacturaId')" href="#"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                                                <td class="text-center"><small>@a.nombre</small></td>
+                                                <td class="text-center"><small>@a.nombreCliente</small></td>
+                                                <td class="text-center"><small>@a.Servicio</small> </td>
+                                                <td class="text-center"><small>@a.FechaDiligenciamiento.ToString("dd/MM/yyyy")</small>  </td>
+
+
+                                                @if (a.estadoHorasIT == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasTI</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasTI</small> </a></td>
+
+                                                }
+                                                @if (a.estadoHorasImpuesto == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasImpuestos</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasImpuestos</small> </a></td>
+
+                                                }
+
+
+
+                                                @if (a.estadoHorasLegal == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasLegales</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasLegales</small> </a></td>
+
+                                                }
+
+
+                                                <td class="text-center"><a><small>@a.HorasAuditoria</small></a></td>
+                                                <td class="text-center"><a><small>@a.HorasOutsorcing</small> </a></td>
+
+                                                @if (@a.estadoGerenciaGeneral == 1)
+                                                {
+                                                    <td class="text-center"><a style="color:red"><small>Pendiente</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a style="color:blue"><small>Aprobada</small> </a></td>
+
+                                                }
+
+
+                                                <td class="text-center"><a><small>@a.TotalHoras</small></a></td>
+                                                <td>
+
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Opciones <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href='@Url.Action("obtenerFactura", "Home", new { idFactura = a.FacturaId })'>Ver</a></li>
+
+                                                           @*<li><a href='@Url.Action("ExportaPdf", "Home", new { idFactura = a.FacturaId  })'>Imprimir</a></li>*@
+                                                            @if (@a.estadoGerenciaGeneral == 1)
+                                                            {
+                                                                <li role="separator" class="divider"></li>
+                                                                <li><a onclick="AprobacionGerenciaGeneral('@a.FacturaId','@contador')">Aprobar Gerente General</a></li>
+                                                                <li><a href="#" onclick="RechazarFactura('@a.FacturaId','@contador', 'GerenteGeneral' )">Rechazar Director</a></li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            
+                                        }
+
+                                        contador = contador + 1;
+
+                                    }
+
+                                </tbody>
+
+
+
+                            </table>
+
+                        }
+
+
+
+
+
+
+
+
+
+                        @if (listadoAsistenteGerencia.Count > 0)
+
+                        {
+
+
+                            <table id="AprobacionDirector">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center"></th>
+                                        <th class="text-center"><small>GERENTE A CARGO</small>  </th>
+                                        <th class="text-center"><small>Cliente</small>  </th>
+                                        <th class="text-center"><small>SERVICIO</small> </th>
+                                        <th class="text-center"><small> FECHA DE CREACION</small> </th>
+                                        <th class="text-center"><small>TI</small> </th>
+                                        <th class="text-center"><small>IMP</small></th>
+                                        <th class="text-center"><small>LEG</small> </th>
+                                        <th class="text-center"><small>FIN</small> </th>
+                                        <th class="text-center"><small>OUT</small> </th>
+                                        <th class="text-center"><small>ESTADO</small> </th>
+
+                                        <th class="text-center"><small>Total Horas</small></th>
+                                        <th class="text-center"><small></small> </th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+
+                                    @foreach (var a in listadoAsistenteGerencia)
+                                    {
+
+
+
+                                        if (a.Estado == "2")
+                                        {
+
+
+
+                                            <tr id="item_@(contador)">
+
+
+                                                <td class="text-center"><a onclick="modalMensajes('@a.FacturaId')" href="#"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                                                <td class="text-center"><small>@a.nombre</small></td>
+                                                <td class="text-center"><small>@a.nombreCliente</small></td>
+                                                <td class="text-center"><small>@a.Servicio</small> </td>
+                                                <td class="text-center"><small>@a.FechaDiligenciamiento.ToString("dd/MM/yyyy")</small>  </td>
+
+
+                                                @if (a.estadoHorasIT == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasTI</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasTI</small> </a></td>
+
+                                                }
+                                                @if (a.estadoHorasImpuesto == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasImpuestos</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasImpuestos</small> </a></td>
+
+                                                }
+
+
+
+                                                @if (a.estadoHorasLegal == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasLegales</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasLegales</small> </a></td>
+
+                                                }
+
+
+                                                <td class="text-center"><a><small>@a.HorasAuditoria</small></a></td>
+                                                <td class="text-center"><a><small>@a.HorasOutsorcing</small> </a></td>
+
+                                                @if (@a.estadeAsistenteGerencia == 1)
+                                                {
+                                                    <td class="text-center"><a style="color:red"><small>Pendiente</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a style="color:blue"><small>Aprobada</small> </a></td>
+
+                                                }
+
+
+                                                <td class="text-center"><a><small>@a.TotalHoras</small></a></td>
+                                                <td>
+
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Opciones <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href='@Url.Action("obtenerFactura", "Home", new { idFactura = a.FacturaId })'>Ver</a></li>
+
+                                                           @* <li><a href='@Url.Action("ExportaPdf", "Home", new { idFactura = a.FacturaId  })'>Imprimir</a></li>*@
+                                                            @if (@a.estadeAsistenteGerencia == 1)
+                                                                    {
+                                                                        
+                                                                        <li role="separator" class="divider"></li>
+                                                                <li><a href="#" onclick="AprobacionAsistenteGerenciaGeneral('@a.FacturaId','@contador')">Aprobar Asistente Gerente General</a></li>
+                                                                     <li><a href = "#" onclick="RechazarFactura('@a.FacturaId','@contador', 'AsistenteGerenteGeneral' )">Rechazar Asistente Gerencia General </a></li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+                                        }
+
+                                        contador = contador + 1;
+
+                                    }
+
+                                </tbody>
+
+
+
+                            </table>
+
+                        }
+                    </div>
+
+
+                    <div id="menu3" class="tab-pane fade">
+                        @*@{ int contador = 1;
+
+
+            }*@
+
+                        @if (listadoAprobacionGerenteGeneal.Count > 0)
+
+                        {
+
+
+                            <table id="AprobacionDirector">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center"></th>
+                                        <th class="text-center"><small>GERENTE A CARGO</small>  </th>
+                                        <th class="text-center"><small>Cliente</small>  </th>
+                                        <th class="text-center"><small>SERVICIO</small> </th>
+                                        <th class="text-center"><small> FECHA DE CREACION</small> </th>
+                                        <th class="text-center"><small>TI</small> </th>
+                                        <th class="text-center"><small>IMP</small></th>
+                                        <th class="text-center"><small>LEG</small> </th>
+                                        <th class="text-center"><small>FIN</small> </th>
+                                        <th class="text-center"><small>OUT</small> </th>
+                                        <th class="text-center"><small>ESTADO</small> </th>
+
+                                        <th class="text-center"><small>Total Horas</small></th>
+                                        <th class="text-center"><small></small> </th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+
+                                    @foreach (var a in listadoAprobacionGerenteGeneal)
+                                    {
+
+
+
+                                        if (a.Estado == "2")
+                                        {
+
+
+
+                                            <tr id="item_@(contador)">
+
+
+                                                <td class="text-center"><a onclick="modalMensajes('@a.FacturaId')" href="#"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                                                <td class="text-center"><small>@a.nombre</small></td>
+                                                <td class="text-center"><small>@a.nombreCliente</small></td>
+                                                <td class="text-center"><small>@a.Servicio</small> </td>
+                                                <td class="text-center"><small>@a.FechaDiligenciamiento.ToString("dd/MM/yyyy")</small>  </td>
+
+
+                                                @if (a.estadoHorasIT == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasTI</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasTI</small> </a></td>
+
+                                                }
+                                                @if (a.estadoHorasImpuesto == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasImpuestos</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasImpuestos</small> </a></td>
+
+                                                }
+
+
+
+                                                @if (a.estadoHorasLegal == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasLegales</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasLegales</small> </a></td>
+
+                                                }
+
+
+                                                <td class="text-center"><a><small>@a.HorasAuditoria</small></a></td>
+                                                <td class="text-center"><a><small>@a.HorasOutsorcing</small> </a></td>
+
+                                                @if (@a.estadoGerenciaGeneral == 1)
+                                                {
+                                                    <td class="text-center"><a style="color:red"><small>Pendiente</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a style="color:blue"><small>Aprobada</small> </a></td>
+
+                                                }
+
+
+                                                <td class="text-center"><a><small>@a.TotalHoras</small></a></td>
+                                                <td>
+
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Opciones <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href='@Url.Action("obtenerFactura", "Home", new { idFactura = a.FacturaId })'>Ver</a></li>
+
+                                                           @* <li><a href='@Url.Action("ExportaPdf", "Home", new { idFactura = a.FacturaId  })'>Imprimir</a></li>*@
+                                                            @if (@a.estadoGerenciaGeneral == 1)
+                                                            {
+                                                                <li role="separator" class="divider"></li>
+                                                                <li><a onclick="AprobacionGerenciaGeneral('@a.FacturaId','@contador')">Aprobar Gerente General</a></li>
+                                                                <li><a href="#" onclick="RechazarFactura('@a.FacturaId','@contador', 'GerenteGeneral' )">Rechazar Director</a></li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+                                        }
+
+                                        contador = contador + 1;
+
+                                    }
+
+                                </tbody>
+
+
+
+                            </table>
+
+                        }
+
+
+
+
+
+
+
+
+
+                   
+                    </div>
+
+
+
+                    <div id="menu4" class="tab-pane fade">
+
+                        @if (listadoAreaEspecializada.Count > 0)
+
+                        {
+
+
+                        <table id="AprobacionAreaEspacializada">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"></th>
+                                    <th class="text-center"><small>GERENTE A CARGO</small>  </th>
+                                    <th class="text-center"><small>Cliente</small>  </th>
+                                    <th class="text-center"><small>SERVICIO</small> </th>
+                                    <th class="text-center"><small> FECHA DE CREACION</small> </th>
+                                    <th class="text-center"><small>TI</small> </th>
+                                    <th class="text-center"><small>IMP</small></th>
+                                    <th class="text-center"><small>LEG</small> </th>
+                                    <th class="text-center"><small>FIN</small> </th>
+                                    <th class="text-center"><small>OUT</small> </th>
+                                    <th class="text-center"><small>ESTADO</small> </th>
+
+                                    <th class="text-center"><small>Total Horas</small></th>
+                                    <th class="text-center"><small></small> </th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+
+                                @foreach (var a in listadoAreaEspecializada)
+                                {
+
+
+
+                                    if (a.Estado == "2")
+                                    {
+
+                                        if ((ViewBag.IdUsuario == "E43B0C6A-2340-4E24-A450-5BB5179AE749" && Convert.ToInt32(a.HorasTI)>0)|| (ViewBag.IdUsuario == "5D1F7469-F857-47F2-8DFD-0350AEAE0C8A" && Convert.ToInt32(a.HorasLegales) > 0) || (ViewBag.IdUsuario == "85315D7B-CFFA-40AB-8AB4-678409D0F19B" && Convert.ToInt32(a.HorasImpuestos) > 0))
+                                        {
+
+                                <tr id="item_@(contador)">
+
+
+                                    <td class="text-center"><a onclick="modalMensajes('@a.FacturaId')" href="#"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                                    <td class="text-center"><small>@a.nombre</small></td>
+                                    <td class="text-center"><small>@a.nombreCliente</small></td>
+                                    <td class="text-center"><small>@a.Servicio</small> </td>
+                                    <td class="text-center"><small>@a.FechaDiligenciamiento.ToString("dd/MM/yyyy")</small>  </td>
+
+
+                                    @if (a.estadoHorasIT == "1")
+                                    {
+
+                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasTI</small> </a></td>
+
+                                    }
+                                    else
+                                    {
+
+                                    <td class="text-center"><a><small>@a.HorasTI</small> </a></td>
+
+                                    }
+                                    @if (a.estadoHorasImpuesto == "1")
+                                    {
+
+                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasImpuestos</small> </a></td>
+
+                                    }
+                                    else
+                                    {
+
+                                    <td class="text-center"><a><small>@a.HorasImpuestos</small> </a></td>
+
+                                    }
+
+
+
+                                    @if (a.estadoHorasLegal == "1")
+                                    {
+
+                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasLegales</small> </a></td>
+
+                                    }
+                                    else
+                                    {
+
+                                    <td class="text-center"><a><small>@a.HorasLegales</small> </a></td>
+
+                                    }
+
+
+                                    <td class="text-center"><a><small>@a.HorasAuditoria</small></a></td>
+                                    <td class="text-center"><a><small>@a.HorasOutsorcing</small> </a></td>
+
+                                    @if (@a.estadeAsistenteGerencia == 1)
+                                    {
+                                    <td class="text-center"><a style="color:red"><small>Pendiente</small> </a></td>
+
+                                    }
+                                    else
+                                    {
+
+                                    <td class="text-center"><a style="color:blue"><small>Aprobada</small> </a></td>
+
+                                    }
+
+
+                                    <td class="text-center"><a><small>@a.TotalHoras</small></a></td>
+                                    <td>
+
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Opciones <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href='@Url.Action("obtenerFactura", "Home", new { idFactura = a.FacturaId })'>Ver</a></li>
+
+                                                @*<li><a href='@Url.Action("ExportaPdf", "Home", new { idFactura = a.FacturaId })'>Imprimir</a></li>*@
+                                                @if (@a.estadeAsistenteGerencia == 1)
+                                                {
+
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="#" onclick="AprobacionAsistenteGerenciaGeneral('@a.FacturaId','@contador')">Aprobar Asistente Gerente General</a></li>
+                                                <li><a href="#" onclick="RechazarFactura('@a.FacturaId','@contador', 'AsistenteGerenteGeneral' )">Rechazar Asistente Gerencia General </a></li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                        }
+
+                                    }
+
+                                    contador = contador + 1;
+
+                                }
+
+                            </tbody>
+
+
+
+                        </table>
+
+                        }
+
+
+                    </div>
+
+
+                    <div id="menu5" class="tab-pane fade">
+
+                        @if (contabilidad.Count > 0)
+
+                        {
+
+
+                            <table id="AprobacionContabilidad">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center"></th>
+                                        <th class="text-center"><small>GERENTE A CARGO</small>  </th>
+                                        <th class="text-center"><small>Cliente</small>  </th>
+                                        <th class="text-center"><small>SERVICIO</small> </th>
+                                        <th class="text-center"><small> FECHA DE CREACION</small> </th>
+                                        <th class="text-center"><small>TI</small> </th>
+                                        <th class="text-center"><small>IMP</small></th>
+                                        <th class="text-center"><small>LEG</small> </th>
+                                        <th class="text-center"><small>FIN</small> </th>
+                                        <th class="text-center"><small>OUT</small> </th>
+                                        <th class="text-center"><small>ESTADO</small> </th>
+
+                                        <th class="text-center"><small>Total Horas</small></th>
+                                        <th class="text-center"><small></small> </th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+
+                                    @foreach (var a in contabilidad)
+                                    {
+
+
+
+                                        if (a.Estado == "2")
+                                        {
+
+
+
+                                            <tr id="item_@(contador)">
+
+
+                                                <td class="text-center"><a onclick="modalMensajes('@a.FacturaId')" href="#"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                                                <td class="text-center"><small>@a.nombre</small></td>
+                                                <td class="text-center"><small>@a.nombreCliente</small></td>
+                                                <td class="text-center"><small>@a.Servicio</small> </td>
+                                                <td class="text-center"><small>@a.FechaDiligenciamiento.ToString("dd/MM/yyyy")</small>  </td>
+
+
+                                                @if (a.estadoHorasIT == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasTI</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasTI</small> </a></td>
+
+                                                }
+                                                @if (a.estadoHorasImpuesto == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasImpuestos</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasImpuestos</small> </a></td>
+
+                                                }
+
+
+
+                                                @if (a.estadoHorasLegal == "1")
+                                                {
+
+                                                    <td class="text-center"><a style="color:darkseagreen"><small>@a.HorasLegales</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a><small>@a.HorasLegales</small> </a></td>
+
+                                                }
+
+
+                                                <td class="text-center"><a><small>@a.HorasAuditoria</small></a></td>
+                                                <td class="text-center"><a><small>@a.HorasOutsorcing</small> </a></td>
+
+                                                @if (@a.estadoContabilidadl == 1)
+                                                {
+                                                    <td class="text-center"><a style="color:red"><small>Pendiente</small> </a></td>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="text-center"><a style="color:blue"><small>Aprobada</small> </a></td>
+
+                                                }
+
+
+                                                <td class="text-center"><a><small>@a.TotalHoras</small></a></td>
+                                                <td>
+
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Opciones <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href='@Url.Action("obtenerFactura", "Home", new { idFactura = a.FacturaId })'>Ver</a></li>
+                                                            <li><a onclick="AprobacionContabilidad('@a.FacturaId','@contador')">Aprobar Contabilidad</a></li>
+                                                            <li><a href="#" onclick="RechazarFactura('@a.FacturaId','@contador', 'Contabilidad' )">Rechazar Contabilidad</a></li>
+                                                        
+
+                                                            @* <li><a href='@Url.Action("ExportaPdf", "Home", new { idFactura = a.FacturaId  })'>Imprimir</a></li>*@
+                                                            @if (@a.estadeAsistenteGerencia == 2)
+                                                            {
+
+                                                                <li role="separator" class="divider"></li>
+
+
+                                                                <li><a href='#' onclick="ControlFacturacion('@a.FacturaId','@a.nombreCliente' , '@a.Servicio')">Control De facturacion</a></li>
+                                                              
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+                                        }
+
+                                        contador = contador + 1;
+
+                                    }
+
+                                </tbody>
+
+
+
+                            </table>
+
+                        }
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                <div class="modal fade" id="modalMensajesText" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Modal title</h4>
+                            </div>
+                            <div class="modal-body" id="Mensajes">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+                <div class="modal fade" id="modalAprobacion" tabindex="-1" role="dialog">
+
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Pasar a Aporobacion</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="comment">Observaciones:</label>
+                                    <textarea style="min-width: 100%" class="form-control" rows="5" id="commentAprobacion"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-primary" id="guardarFacturaF">Pasar aprobacion</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+                <div class="modal fade" id="modalGerenciaGeneral" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Aprobacion Director</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="comment">Observaciones:</label>
+                                    <textarea style="min-width: 100%" class="form-control" rows="5" id="TxtBtnAprobacion"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-primary" id="btnGerenciaGeneral">Aprobar GerenciaGeneral </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+                <div class="modal fade" id="modalAprobacinDirector" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Aprobacion Director</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="comment">Observaciones:</label>
+                                    <textarea style="min-width: 100%" class="form-control" rows="5" id="TxtAprobacionDirector"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-primary" id="btnAprobacionDirector">Aprobar Director</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+
+                <div class="modal fade" id="modalAprobacinContabilidad" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Aprobacion Contabilidad</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="comment">Observaciones:</label>
+                                    <textarea style="min-width: 100%" class="form-control" rows="5" id="TxtBtnAprobacionContabilidad"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-primary" id="btnAprobacionContabilidad">Aprobar Contabilidad</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+                <div class="modal fade" id="modalAprobacionArea" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Pasar a Aporobacion</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="comment">Observaciones:</label>
+                                    <textarea style="min-width: 100%" class="form-control" rows="5" id="commentAprobacionAreaTxt"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-primary" id="commentAprobacionArea">Aceptar</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+                <div class="modal fade" id="ModalRechazarFactura" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Rechazar Factura</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="comment">Observaciones:</label>
+                                    <textarea style="min-width: 100%" class="form-control" rows="5" id="commentRechazarAreaTxt"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-primary" id="commentRechazarFactura">Rechazar Factura</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+
+                <div class="modal fade" id="AprobacionAsistenteGenereal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Rechazar Horas</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="comment">Observaciones:</label>
+                                    <textarea style="min-width: 100%" class="form-control" rows="5" id="commentAprobacionAsistenteGeneralAreaTxt"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-primary" id="comenteAprobacionAsistenteGeneral">Aprobar</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+                <div class="modal fade" id="modalRechazarArea" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Rechazar Horas</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="comment">Observaciones:</label>
+                                    <textarea style="min-width: 100%" class="form-control" rows="5" id="commentRechazarAreaTxt"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-primary" id="commentRechazarArea">Rechazar</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+                
+
+                        <div class="modal fade" id="modalModificarHoras" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 id="tituloModal" class="modal-title"></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-1" style="padding-top:5px"><B>HORAS</B></div>
+                                                <div class="col-md-4"><input type="text" class="form-control" id="InputHorasMoficar" ></div>
+                                            
+                                            </div>
+                                            <div class="row">
+                                                <input type="text" class="form-control" id="txtModificacion" placeholder="Text input">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3" style="padding-top:5px"><button type="button" class="btn btn-primary btn-sm" id="ModificarHoras" data-dismiss="modal">Modificar</button></div>
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">cerrar</button>
+
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                <div class="modal fade" id="modificarHorasDiv" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Modal title</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-1">Horas TI</div>
+                                        <div class="col-md-5">
+                                        <div class="form-group">
+                                   
+                                        <input type="email" class="form-control" id="HorasTiEditar" placeholder="Email">
+                                        </div>
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">IMPUESTOS</div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+
+                                                <input type="email" class="form-control" id="HorasIMPUESTOSEditar" placeholder="Email">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">IFRS</div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+
+                                                <input type="email" class="form-control" id="HorasifrsEditar"  placeholder="Email">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">LEGALES</div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+
+                                                <input type="email" class="form-control" id="HorasLegalesEditar" placeholder="Email">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">Servicio</div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" id="HorasServicioEditar" placeholder="Email">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">Total</div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+
+                                                <input type="email" class="form-control" id="TotalHorasEditar" placeholder="Email">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" id="btnModificar" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+                <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Eliminar Factura</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p id="EliminarFacturaText"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <button type="button" id="EliminarFacturaF" class="btn btn-primary">Aceptar</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+                <div class="modal fade bs-example-modal-lg" id="modalContabilidad" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title"><a style="text-align:center"><img src="~/images/Logo-en-Policrom--a-e1443198604156.png"/> <br /><br /> Control De Facturacion</a></h4>
+                                <div>Cliente: <a id="clienteId"></a></div>
+                                <div>Servicio: <a id="servicio"></a></div>
+                            </div>
+                            <div class="modal-body">
+                               <table class="table table-bordered" style="text-align:center">
+
+                                   <tr>
+                                       <th>PERIODO</th>
+                                       <th>No Factura</th>
+                                       <th>Observaciones</th>
+                                       <th>VALOR FACTURADO</th>
+                                       <th>Opciones</th>
+
+
+                                   </tr>
+                                   <tr>
+                                    
+                                
+
+                                       <td colspan="1">
+                                           <div class='input-group date' id='datetimepicker7'>
+                                               <input type="text" class="form-control" id="fecha" />
+                                          
+                                               <span class="input-group-addon">
+                                                   <span class="fa fa-clock-o"></span>
+                                               </span>
+                                           </div>
+                                           <script type="text/javascript">
+                                                $(function () {
+                                                    var date = new Date();
+                                                  //  date.setDate(date.getDate() - 1);
+                                                    $('#datetimepicker7').datetimepicker({
+
+                                                        format: 'YYYY-MM-DD',
+
+                                                        minDate: moment().add(0, 'days'),
+                                                      //  maxDate: moment(), // Current day
+
+
+                                                    });
+                                                });
+                                           </script>
+
+                                       </td>
+
+
+
+                                       <td><input type="text" class="form-control" id="Nfactura" /></td>
+                                       <td><input type="text" class="form-control" id="Observaciones" /></td>
+                                       <td><input type="text" class="form-control" id="ValorFacturado" /></td>
+                                       <td><a class="btn btn-primary" id="GuardarNovedadFactura" >Guardar</a></td>
+
+
+
+                                   </tr>
+
+
+
+                               </table>
+                                <br />
+                                <br />
+                                <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>PERIODO</th>
+                                        <th>No Factura</th>
+                                        <th>Observaciones</th>
+                                        <th>VALOR FACTURADO</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody id="RegistroControlFacturacion">
+
+
+                                </tbody>
+                                   
+                                 
+
+
+                                </table>
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+                    </div>
+                    </div>
+                </div>
+                    </div>
+             
+<script>
+
+    $(document).ready(function () {
+        $('#FacturasBorrador').DataTable({
+            responsive: true,
+            "order": [[0, "desc"]]
+        });
+
+        
+
+
+
+        $('#AprobacionDirectorGeneral').DataTable({
+            responsive: true,
+            "order": [[0, "desc"]]
+        });
+
+        $('#AprobacionDirector').DataTable({
+            responsive: true,
+            "order": [[0, "desc"]]
+        });
+
+        $('#TableEstado').DataTable({
+            responsive: true,
+            "order": [[0, "desc"]]
+        });
+        
+
+        $('#AprobacionAreaEspacializada').DataTable({
+            responsive: true,
+            "order": [[0, "desc"]]
+        });
+
+
+        $('#tableAprobar').DataTable({
+            responsive: true,
+            "order": [[0, "desc"]]
+        });
+
+        $('#Contabilidad').DataTable({
+            responsive: true,
+            "order": [[0, "desc"]]
+        });
+
+        $('#AprobacionContabilidad').DataTable({
+            responsive: true,
+            "order": [[0, "desc"]]
+        });
+
+        
+        
+
+
+    });
+
+
+</script>

@@ -1,0 +1,32 @@
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\ModelContext.dll.config
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\ModelContext.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\ModelContext.pdb
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\Entidades.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\EntityFramework.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\Helpers.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\Newtonsoft.Json.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\Entidades.pdb
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\Helpers.pdb
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\EntityFramework.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\bin\Release\Newtonsoft.Json.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\obj\Release\ModelContext.csprojResolveAssemblyReference.cache
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\obj\Release\ModelContext.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\ModelContext\obj\Release\ModelContext.pdb
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\ModelContext.dll.config
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\ModelContext.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\ModelContext.pdb
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\Entidades.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\EntityFramework.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\EntityFramework.SqlServer.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\Helpers.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\Newtonsoft.Json.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\Entidades.pdb
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\Helpers.pdb
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\EntityFramework.xml
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\EntityFramework.SqlServer.xml
+E:\20_04_17\AmezquitaPropuestas\ModelContext\bin\Release\Newtonsoft.Json.xml
+E:\20_04_17\AmezquitaPropuestas\ModelContext\obj\Release\ModelContext.csprojResolveAssemblyReference.cache
+E:\20_04_17\AmezquitaPropuestas\ModelContext\obj\Release\ModelContext.dll
+E:\20_04_17\AmezquitaPropuestas\ModelContext\obj\Release\ModelContext.pdb

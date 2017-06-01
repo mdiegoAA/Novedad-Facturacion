@@ -1,0 +1,843 @@
+﻿@model ModelContext.NovedadFactura
+@{
+
+
+
+    ViewBag.Title = "AgregarNovedadFactura";
+    List<ModelContext.ClientePropuesta> clientes = ViewBag.listadClientes;
+    List<ModelContext.Servicios> servicios = ViewBag.listadoServicios;
+    List<ModelContext.Usuarios> listadoDirectors = ViewBag.listadoDirectors;
+    List<ModelContext.Usuarios> listadoGerentes = ViewBag.listadoGerentes;
+
+    Layout = null;
+}
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+<link href="~/css/admin-style.css" rel="stylesheet" />
+<script type="text/javascript" src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.form.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/ini.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+<script src="~/Scripts/AgregarNovedadFactura.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-left well well-sm">
+                    <a  class="btn btn-primary" href='@Url.Action("Index", "Home")'>VOLVER</a>
+                  
+                </div>
+
+                @using (Html.BeginForm("guardarfACTURA", "Home", FormMethod.Post))
+                {
+
+
+
+
+                    <table class="table table-bordered table-condensed ">
+                        <tr>
+                            <td colspan="6" style="text-align:center ; padding-top:5px"><b> FORMATO DE CREACION DE CLIENTE Y FACTURACION</b></td>
+                            <td rowspan="2" colspan="2"><img src="~/img/12.png" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="font-size:10px ; height:2% ;text-align:center">Fecha de actualizacion:11/03/2016</td>
+                            <td colspan="3" style="font-size:10px ;text-align:center">Version:02</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="8"></td>
+
+                        </tr>
+                        <tr style="height:10%">
+
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">FECHA CREACIÓN</td>
+                            <td colspan="2">
+                                <div class='input-group date' id='datetimepicker7'>
+
+                                    @Html.TextBoxFor(x => x.FechaDiligenciamiento, new { @disabled = "disabled" , @class = "form-control", id = "fecha" })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-clock-o"></span>
+                                    </span>
+                                </div>
+                                <script type="text/javascript">
+                                                $(function () {
+                                                    var date = new Date();
+                                                  //  date.setDate(date.getDate() - 1);
+                                                    $('#datetimepicker7').datetimepicker({
+                                                       
+                                                        format: 'YYYY-MM-DD',
+
+                                                        minDate: moment().add(0, 'days'),
+                                                      //  maxDate: moment(), // Current day
+
+
+                                                    });
+                                                });
+                                </script>
+
+                            </td>
+                            <td style="font-size:12px ;text-align:center ;padding-top:15px" colspan="2"><b>CONSECUTIVO</b></td>
+                            <td style="font-size:12px" colspan="2">
+                                @Html.TextBoxFor(x => x.ConsecutivoControlTiempo, new { @disabled = "disabled", @value="cons" , @text="", @class = "form-control input-sm" ,id="ConsecutivoControlTiempos" })
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="8"></td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="8" style="background-color:black ;font-size:12px ; color:white ;text-align:center">DATOS DEL CLIENTE</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="font-size:12px;text-align:center;padding-top:15px" id="RazonSocialValiditation">Razon Social</td>
+                            <td colspan="2">
+
+                               
+                                    @Html.DropDownListFor(x => x.IdCliente, new SelectList(ViewBag.listadClientes, "ClienteID", "RazonSocial"), new { @class = "selectpicker"  , id = "SelectRazonSocial" })
+
+                              
+                              
+                                  </td>
+                            <td style="font-size:12px; padding-top:15px ; text-align:center" colspan="2">NIT</td>
+
+                            <td colspan="2">
+
+                                <input type="text" id="NIT" class="form-control input-group-lg input-sm" />
+                            </td>
+                            @*<td style="text-align:center"><input type="text" class="form-control input-group-lg input-sm" id="dv" placeholder="D.V" /></td>*@
+
+
+                        </tr>
+                        <tr>
+                            <td style="font-size:12px; padding-top:15px ; text-align:center" colspan="2">DIRECCION</td>
+
+                            <td colspan="2">
+                            
+                                <div class="input-group" id="ModificaDireccionResult">
+
+
+                                    <span class="input-group-addon" id="basic-addon1"><a href="#" id="modificarDireccionCliente"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></span>
+                                    <input type="text" class="form-control" placeholder="Direccion" id="direccion" aria-describedby="basic-addon1">
+                                </div>                           
+                            </td>
+                            <td style="font-size:12px;text-align:center;padding-top:15px" id="validacionTipoContribuyente" colspan="2">TIPO DE CONTRIBUYENTE</td>
+
+
+                         
+
+
+                            <td colspan="2">
+                                @Html.DropDownListFor(x => x.TipoContribuyente, new List<SelectListItem>
+                 {
+                    new SelectListItem() {Text = "SELECCIONAR", Value="0"},
+                    new SelectListItem() {Text = "Gran Contribuyente", Value="Gran Contribuyente"},
+                    new SelectListItem() {Text = "Empresa del estado", Value="Empresa del estado"},
+                    new SelectListItem() {Text = "Régimen Común", Value="Régimen Común"},
+                    new SelectListItem() {Text = "No residente en el país", Value="No residente en el país"}
+                }, new { @class = "selectpicker", id = "tipoContribuyentes" })
+                            </td>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                           
+                        </tr>
+                        <tr>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">TELEFONO</td>
+
+                            <td colspan="2">
+
+                                <div class="input-group" id="ModificaTelefonoResult">
+
+
+                                    <span class="input-group-addon" id="basic-addon1"><a href="#" id="modificarTelefonoCliente"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></span>
+                                    <input type="text" class="form-control" placeholder="Telefono" id="telefono" aria-describedby="basic-addon1">
+                                </div>
+
+                            
+                            
+                        
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">CELULAR</td>
+
+
+                            <td colspan="2">
+
+                                <div class="input-group" id="ModificaCelularResult">
+
+
+                                    <span class="input-group-addon" id="basic-addon1"><a href="#" id="modificarCelularCliente"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></span>
+                                    <input type="text" class="form-control" placeholder="Celular" id="celular" aria-describedby="basic-addon1">
+                                </div>
+                            
+                            
+                            
+                        
+
+                        </tr>
+                        <tr>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">CONTACTO CLIENTE</td>
+
+                            <td colspan="2">
+
+
+                                <div class="input-group" id="ModificaContatoResult">
+
+                                 
+                                    <span class="input-group-addon" id="basic-addon1"><a href="#" id="modificarContactoCliente"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></span>
+                                    <input type="text" class="form-control" placeholder="ContactoCliente" id="ContactoCliente" aria-describedby="basic-addon1">
+                                </div>
+                               
+                                @*<div class="input-group input-group-sm">
+                                    <span class="input-group-addon" id="sizing-addon3"></span>
+                                    <input type="text" class="form-control input-group-lg input-sm" id="ContactoCliente" placeholder="Username" aria-describedby="sizing-addon3">
+                                </div>*@
+
+                            </td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">EMAIL CLIENTE</td>
+
+                            <td colspan="2">
+                            
+                            
+                                <div class="input-group" id="ModificaEmailResult">
+
+
+                                    <span class="input-group-addon" id="basic-addon1"><a href="#" id="modificarEmailCliente"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></span>
+                                    <input type="text" class="form-control" placeholder="Email" id="email" aria-describedby="basic-addon1">
+                                </div>
+                            
+                            
+                            
+                        </tr>
+                        <tr>
+                            <td colspan="8" style="background-color:black ;font-size:12px ; color:white; text-align:center">DATOS DE FACTURACION</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="8"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center" id="TipoServicioNotificacion" colspan="1">TIPO DE SERVICIO </td>
+                            <td colspan="1">
+                                @Html.DropDownListFor(x => x.TipoServicio, new SelectList(ViewBag.listadoServicios, "ServicioId", "NombreServicio"), new { @class = "selectpicker", id = "SelectServicio" })
+
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center" id="SectorNoticacion" colspan="2">SECTOR </td>
+
+                            <td>
+                                @Html.DropDownListFor(x => x.Sector, new List<SelectListItem>
+                 {
+                    new SelectListItem() {Text = "SELECCIONAR", Value="0"},
+                    new SelectListItem() {Text = "REAL", Value="REAL"},
+                    new SelectListItem() {Text = "BANCA-MULTILATERA", Value="BANCA-MULTILATERA"},
+                    new SelectListItem() {Text = "FINANCIERA", Value="FINANCIERA"},
+                    new SelectListItem() {Text = "SOLIDARIO", Value="SOLIDARIO"},
+                     new SelectListItem() {Text = "PÚBLICO", Value="PÚBLICO"},
+                }, new { @class = "selectpicker", id = "SelectSector" })
+                            </td>
+
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center" id="tipoNovedadResult" colspan="1" >TIPO DE NOVEDAD</td>
+                            <td>
+                                @Html.DropDownListFor(x => x.Antiguedad, new List<SelectListItem>
+                 {
+                    new SelectListItem() {Text = "SELECCIONAR", Value="0"},
+                       new SelectListItem() {Text ="INCREMENTO", Value="INCREMENTO"},
+                        new SelectListItem() {Text ="TERMINACION DE CONTRATO", Value="TERMINACION DE CONTRATO"},
+                    new SelectListItem() {Text = "FACTURA ADICIONAL", Value="FACTURA ADICIONAL"},
+                    new SelectListItem() {Text = "CLIENTE NUEVO", Value="CLIENTE NUEVO"},
+                      new SelectListItem() {Text = "REDISTRIBUCIÓN DE HORAS", Value="REDISTRIBUCIÓN DE HORAS"},
+                       new SelectListItem() {Text = "CAMBIO DE GERENTE O DIRECTOR", Value="CAMBIO DE GERENTE O DIRECTOR"}
+                }, new { @class = "selectpicker", id = "SelectAntiguedad" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="4"><b>NUMERO DE CONTRATO</b></td>
+                            <td style="font-size:12px" colspan="4">
+                                @Html.TextBoxFor(x => x.numeroContrato, new { @style = "max-width:2000px", @class = "form-control" , id="numeroContrato" })
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1" rowspan="7">HORARIOS </td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2" id="ValorAnualSinIvaNotificacion">Valor ANUAL SIN IVA </td>
+                            <td style="font-size:12px" colspan="1">
+                                @Html.TextBoxFor(x => x.ValorAnualSinIva, new { @class = "form-control" , id= "ValorAnualSinIva" })
+                            </td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">MESES O CUOTAS DE EJECUCION </td>
+                            <td style="font-size:12px" colspan="1">
+                                @Html.TextBoxFor(x => x.MesesCuotasEjecucion, new { @class = "form-control" , id= "MesesCuotasEjecucion" , @Value = "1" })
+                            </td>
+
+
+                        </tr>
+                        <tr>
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">MANEJA CUOTA INICIAL </td>
+
+                            <td style="font-size:12px" colspan="1">
+
+                                @Html.DropDownListFor(x => x.ManejoCuotaInicial, new List<SelectListItem>
+                                 {
+                                    new SelectListItem() {Text = "SI", Value="SI"},
+                                    new SelectListItem() {Text = "NO", Value="NO" , Selected=true},
+                 
+                                }, new { @class = "selectpicker", id = "ManejoCuotaInicial" })
+
+
+                            
+                            </td>
+
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">PORCENTAJE CUOTA INICIAL</td>
+                            <td style="font-size:12px" colspan="1">
+
+                                @Html.DropDownListFor(x => x.PorcentajeCuotaInicial, new List<SelectListItem>
+                                 {
+                                    new SelectListItem() {Text = "0%", Value="0"},
+                                    new SelectListItem() {Text = "10%", Value="10"},
+                                    new SelectListItem() {Text = "20%", Value="20"},
+                                    new SelectListItem() {Text = "30%", Value="30"},
+                                    new SelectListItem() {Text = "40%", Value="40"},
+                                    new SelectListItem() {Text = "50%", Value="50"},
+                                    new SelectListItem() {Text = "60%", Value="60"},
+                                    new SelectListItem() {Text = "70%", Value="70"},
+                                    new SelectListItem() {Text = "80%", Value="80"},
+                                    new SelectListItem() {Text = "90%", Value="90"},
+                                    new SelectListItem() {Text = "100%", Value="100"},
+
+                                }, new { @class = "selectpicker", id = "PorcentajeCuotaInicial" })
+
+
+                               
+                            </td>
+
+                        </tr>
+                        <tr>
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1">ANTICIPO</td>
+                            <td style="font-size:12px" colspan="2">
+                                @Html.TextBoxFor(x => x.ValorCuotaInicial, new { @class = "form-control" , id="ValorCuotaInicial", @Value = "0" })
+                            </td>
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">VALOR CUOTAS MENSUALES</td>
+                            <td style="font-size:12px" colspan="1">
+                                @Html.TextBoxFor(x => x.ValorCoutasMensuales, new { @class = "form-control" , id= "ValorCoutasMensuales" , @Value = "0" })
+                            </td>
+
+                        </tr>
+                        <tr>
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1">VALOR MENSUAL SIN IVA</td>
+                            <td style="font-size:12px" colspan="2">
+
+                                @Html.TextBoxFor(x => x.ValorMensualSinIva, new { @class = "form-control", id = "ValorMensualSinIva" })
+
+                              
+
+                            </td>
+
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">GRAVADO</td>
+                            <td style="font-size:12px" colspan="1">
+
+                                @Html.DropDownListFor(x => x.ValorMensualSinIva, new List<SelectListItem>
+                                 {
+                                      new SelectListItem() {Text = "SI", Value="SI"},
+                                    new SelectListItem() {Text = "NO", Value="NO"}
+
+
+                                }, new { @class = "selectpicker", id = "Gravado" })
+
+                             
+                            </td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan="7"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="3">VALOR TOTAL CONTRATO INCLUIDO IVA ANUAL</td>
+                            <td style="font-size:12px" colspan="3">
+                                @Html.TextBoxFor(x => x.ValorTotalContratoIncluidoIvaAnual, new { @style="max-width:2000px", @class = "form-control" , id= "ValorTotalContratoIncluidoIvaAnual" })
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="8"></td>
+
+                        </tr>
+                        <tr>
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center" id="FechaInicioContratoNotificacion" colspan="2">FECHA INICIO DEL CONTRATO</td>
+                            <td colspan="2">
+                                <div class='input-group date' id='datetimepicker1'>
+
+                                    @Html.TextBoxFor(x => x.FechaInicioContrato, new { @class = "form-control", id = "FechaInicioContrato"  })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-clock-o"></span>
+                                    </span>
+                                </div>
+                                <script type="text/javascript">
+                                                $(function () {
+                                                    var date = new Date();
+                                                  //  date.setDate(date.getDate() - 1);
+                                                    $('#datetimepicker1').datetimepicker({
+                                                        format: 'YYYY-MM-DD',
+                                                      
+                                                      //  minDate: moment(),
+                                                      //  maxDate: moment(), // Current day
+
+
+                                                    });
+                                                });
+                                </script>
+
+                            </td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center" id="FechaFinalizacionContratoNotificacion" colspan="2">FECHA DE FINALIZACION CONTRATO</td>
+                            <td colspan="2">
+                                <div class='input-group date' id='datetimepicker2'>
+                                    @Html.TextBoxFor(x => x.FechaFinalizacionContrato, new { @class = "form-control", id = "FechaFinalizacionContrato" })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-clock-o"></span>
+                                    </span>
+                                </div>
+                                <script type="text/javascript">
+                                                $(function () {
+                                                    var date = new Date();
+                                                  //  date.setDate(date.getDate() - 1);
+                                                    $('#datetimepicker2').datetimepicker({
+                                                        format: 'YYYY-MM-DD',
+
+                                                      //  minDate: moment().add(0, 'days'),
+                                                      //  maxDate: moment(), // Current day
+
+
+                                                    });
+                                                });
+                                </script>
+
+                            </td>
+
+                        </tr>
+                        <tr>
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center" id="FechaInicioFacturacionNotificacion" colspan="2">FECHA DE INICIO DE FACTURACION</td>
+                            <td colspan="2" id="pruebbass">
+                                <div class='input-group date' id='datetimepicker3'>
+                                    @Html.TextBoxFor(x => x.FechaInicioFacturacion, new { @class = "form-control", id = "FechaInicioFacturacion" })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-clock-o"></span>
+                                    </span>
+                                </div>
+                                <script type="text/javascript">
+                                                $(function () {
+                                                    var date = new Date();
+                                                  //  date.setDate(date.getDate() - 1);
+                                                    $('#datetimepicker3').datetimepicker({
+                                                        format: 'YYYY-MM-DD',
+
+                                                       // minDate: moment().add(0, 'days'),
+                                                      //  maxDate: moment(), // Current day
+
+
+                                                    });
+                                                });
+                                </script>
+
+                            </td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">FACTURACION MENSUAL</td>
+                            <td colspan="2">
+
+                                @Html.DropDownListFor(x => x.FacturacionMensual, new List<SelectListItem>
+                                 {
+                                    new SelectListItem() {Text = "ANTICIPADA", Value="ANTICIPADA"},
+                                    new SelectListItem() {Text = "VENCIDA", Value="VENCIDA"},
+                                  
+
+                                }, new { @class = "selectpicker", id = "FacturacionMensual" })
+
+
+                          
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="4">FECHA DE ENTREGA DE FACTURACION</td>
+
+
+                            <td colspan="4">
+
+                                @Html.DropDownListFor(x => x.FechaEntregaFacturacion, new List<SelectListItem>
+                                 {
+                                    new SelectListItem() {Text = "5 DÍAS DE CADA MES", Value="5 DÍAS DE CADA MES"},
+                                    new SelectListItem() {Text = "10 DÍAS DE CADA MES", Value="10 DÍAS DE CADA MES"},
+                                       new SelectListItem() {Text = "20 DÍAS DE CADA MES", Value="20 DÍAS DE CADA MES"},
+                                    new SelectListItem() {Text = "CUANDO LO INFORME EL GERENTE", Value="CUANDO LO INFORME EL GERENTE"},
+
+
+                                }, new { @style="max-width:100%" , @class = "selectpicker form-control", id = "FechaEntregaFacturacion" })
+
+                        
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="4">CONDICION PARA INICIAR LA FACTURACION</td>
+                            <td colspan="4">
+
+
+
+                                @Html.DropDownListFor(x => x.CondicionIniciarFacturacion, new List<SelectListItem>
+                                 {
+                                    new SelectListItem() {Text = "AUTORIZACIÓN DEL GERENTE A CARGO POR MEDIO DE CORREO ELECTRONICO", Value="AUTORIZACIÓN DEL GERENTE A CARGO POR MEDIO DE CORREO ELECTRONICO"},
+                                    new SelectListItem() {Text = "CONTRA ENTREGA DE INFORME", Value="CONTRA ENTREGA DE INFORME"},
+                                       new SelectListItem() {Text = "NOMBRAMIENTO EN CÁMARA DE COMERCIO", Value="NOMBRAMIENTO EN CÁMARA DE COMERCIO"},
+                                    new SelectListItem() {Text = "PREVIA ENTREGA DE LA ORDEN SE INICIA LA FACTURACIÓN", Value="PREVIA ENTREGA DE LA ORDEN SE INICIA LA FACTURACIÓN"},
+
+
+                                }, new { @style ="" , @class = "selectpicker form-control", id = "CondicionIniciarFacturacion" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="8">TEXTO DE FACTURACION Y OBSERVACIONES:</td>
+
+                        </tr>
+                        <tr>
+
+                            <td colspan="8" WIDTH="100" rowspan="2">
+                                @Html.TextAreaFor(x => x.TextoFacturacionObservaciones, new { @style="max-width:3000px" , @class = "form-control", id = "TextoFacturacionObservaciones" })
+
+                            </td>
+
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                       
+                        <tr>
+                            <td colspan="8"></td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="8" style="background-color:black ;font-size:12px ; text-align:center; color:white">HORAS ASIGNADAS AL CLIENTE</td>
+
+                        </tr>
+                        
+                        <tr class="">
+                            <td colspan="8"></td>
+
+                        </tr>
+                      
+                        <tr  class="">
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="4">Cargo</td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2" id="horasAno">Horas</td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2"  id="horasAnoProx">Horas</td>
+                           
+                        </tr>
+                        <tr  class="auditoria" id="AauditoriaError">
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="4">Asistente de auditoría</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="0" style="max-width:3000px" id="Aauditoria"  onblur="sumatoria(this.value, 'AauditoriaError')" class="form-control input-sm"/></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="0" style="max-width:3000px" id="AauditoriaProx" onblur="sumatoriaAprox(this.value, 'AauditoriaError')" class="form-control input-sm" /></td>
+                         
+                        </tr>
+                        <tr  class="auditoria" id="AjuniorError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Auditor Junior</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="Ajunior" style="max-width:3000px"   onblur="sumatoria(this.value, 'AjuniorError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="AjuniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'AjuniorError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr  class="auditoria" id="AjuniorError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Auditor Semisenior</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="ASemisenior" style="max-width:3000px"   onblur="sumatoria(this.value, 'Ajunior')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="ASemiseniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'Ajunior')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr  class="auditoria" id="ASeniorError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Auditor Senior</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="ASenior" style="max-width:3000px"  onblur="sumatoria(this.value, 'ASeniorError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="ASeniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'ASeniorError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr  class="auditoria" id="SjuniorError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Supervisor Junior</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="Sjunior" style="max-width:3000px"  onblur="sumatoria(this.value,'SjuniorError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="SjuniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'SjuniorError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria"  id="SsemiseniorError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Supervisor Semisenior</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="Ssemisenior" style="max-width:3000px"   onblur="sumatoria(this.value,'SsemiseniorError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="SsemiseniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'SsemiseniorError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria"  id="SseniorError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Supervisor Senior</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text"  id="Ssenior" style="max-width:3000px"   onblur="sumatoria(this.value,'SseniorError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="SseniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'SseniorError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria"  id="GJuniorError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente Junior</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GJunior" style="max-width:3000px"  onblur="sumatoria(this.value,'GJuniorError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GJuniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'GJuniorError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria"  id="GSemiError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente Semisenior</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GSemi" style="max-width:3000px"  onblur="sumatoria(this.value,'GSemiError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GSemiAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'GSemiError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria"  id="GSeniorError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente Senior</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GSenior" style="max-width:3000px"  onblur="sumatoria(this.value,'GSeniorError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GSeniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'GSeniorError')" value="0" class="form-control input-sm" /></td>
+                          </tr>
+                        <tr class="auditoria"  id="DJuniorError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Director Junior</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="DJunior" style="max-width:3000px"  onblur="sumatoria(this.value,'DJuniorError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="DJuniorAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'DJuniorError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria"  id="DSemiError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Director Semisenior</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="DSemi" style="max-width:3000px"  onblur="sumatoria(this.value,'DSemiError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="DSemiAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'DSemiError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria"  id="DSeniorError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Director Senior</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="0" style="max-width:3000px" id="DSenior"  onblur="sumatoria(this.value,'DSeniorError')" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="0" style="max-width:3000px" id="DSeniorAprox" onblur="sumatoriaAprox(this.value, 'DSeniorError')" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria" >
+                            <td style="font-size:14px;color:blue; padding-top:8px;text-align:center"  colspan="4">Total Auditoría</td>
+                            <td style="font-size:14px;color:blue; padding-top:2px" colspan="2"><label id="vaueAuditoria">0</label></td>
+                            <td style="font-size:14px;color:blue; padding-top:2px" colspan="2"><label id="vaueAuditoriaAprox">0</label></td>
+                        </tr>
+                        <tr class="auditoria"  id="GSeniorError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Auditor TI</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="AuditorTI" style="max-width:3000px" onblur="sumatoria(this.value, 'AuditorTIError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="AuditorTIAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'AuditorTIError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria"  id="supervisorTIError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Supervisor TI</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="supervisorTI" style="max-width:3000px" onblur="sumatoria(this.value,'supervisorTIError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="supervisorTIAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'supervisorTIError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria"  id="GerenteTIError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente TI</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GerenteTI" style="max-width:3000px" onblur="sumatoria(this.value, 'GerenteTIError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GerenteTIAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'GerenteTIError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria"  id="AuditorImpuestoError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Auditor de impuestos</td>
+
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="AuditorImpuesto" style="max-width:3000px" onblur="sumatoria(this.value, 'AuditorImpuestoError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="AuditorImpuestoAprox" style="max-width:3000px" onblur="sumatoria(this.value, 'AuditorImpuestoError')" value="0" class="form-control input-sm" /></td>
+
+
+                         
+                        </tr>
+                        <tr class="auditoria"  id="GerenteImpuestoError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente de impuestos</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="0" style="max-width:3000px" id="Gerenteimpuestos" onblur="sumatoria(this.value,'AuditorImpuestoError')" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="0" style="max-width:3000px" id="GerenteimpuestosAprox" onblur="sumatoriaAprox(this.value, 'AuditorImpuestoError')" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria"  id="AsesorJuridicoError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Asesor de juridico</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="0" style="max-width:3000px" id="AsesorJuridico" onblur="sumatoria(this.value, 'AsesorJuridicoError')" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" value="0" style="max-width:3000px" id="AsesorJuridicoProx" onblur="sumatoriaAprox(this.value, 'AsesorJuridicoError')" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria"  id="GJuridicoError">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente Jurídico</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GJuridico" style="max-width:3000px" onblur="sumatoria(this.value,'GJuridicoError')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="GJuridicoAprox" style="max-width:3000px" onblur="sumatoriaAprox(this.value, 'GJuridicoError')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="auditoria" >
+                            <td style="font-size:14px;color:blue; padding-top:8px;text-align:center" colspan="4">Total Especialista</td>
+                            <td style="font-size:14px;color:blue; padding-top:4px" colspan="2"><label id="valueEx" >0</label></td>
+                            <td style="font-size:14px;color:blue; padding-top:4px" colspan="2"><label id="valueExAprox">0</label></td>
+                        </tr>
+                        <tr class="auditoria" >
+                            <td style="font-size:14px;color:blue; padding-top:8px;text-align:center" colspan="4">TOTAL</td>
+                            <td style="font-size:14px;color:blue; padding-top:4px" colspan="2"><label id="RsultTotales">0</label></td>
+                            <td style="font-size:14px;color:blue; padding-top:4px" colspan="2"><label id="RsultTotalAprox">0</label></td>
+                        </tr>
+
+                        <tr class="out" id="OutGerente">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Gerente </td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="OutGerenteval" style="max-width:3000px" onblur="sumatoriaOut(this.value, 'OutGerente')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="OutGerentevalAprox" style="max-width:3000px" onblur="sumatoriaOutProx(this.value, 'OutGerente')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="out" id="outSupervisor">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Supervisor </td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outSupervisorVal" style="max-width:3000px" onblur="sumatoriaOut(this.value, 'outSupervisor')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outSupervisorValProx" style="max-width:3000px" onblur="sumatoriaOutProx(this.value, 'outSupervisor')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="out" id="outCordinador">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Cordinador </td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outcordinadorVal" style="max-width:3000px" onblur="sumatoriaOut(this.value, 'outCordinador')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outcordinadorValProx" style="max-width:3000px" onblur="sumatoriaOutProx(this.value, 'outCordinador')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="out" id="outAnalista">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Analista</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outAnalistaVal" style="max-width:3000px" onblur="sumatoriaOut(this.value, 'outAnalista')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outAnalistaValProx" style="max-width:3000px" onblur="sumatoriaOutProx(this.value, 'outAnalista')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="out" id="outAuxiliar">
+                            <td style="font-size:14px ;padding-top:8px;text-align:center " colspan="4">Auxiliar</td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outAuxiliarVal" style="max-width:3000px" onblur="sumatoriaOut(this.value, 'outAuxiliar')" value="0" class="form-control input-sm" /></td>
+                            <td style="font-size:14px ;padding-top:4px;text-align:center " colspan="2"><input type="text" id="outAuxiliarValProx" style="max-width:3000px" onblur="sumatoriaOutProx(this.value, 'outAuxiliar')" value="0" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr class="out">
+                            <td style="font-size:14px;color:blue; padding-top:8px;text-align:center" colspan="4">TOTAL</td>
+                            <td style="font-size:14px;color:blue; padding-top:4px" colspan="2"><label id="RsultTotalesOut">0</label></td>
+                            <td style="font-size:14px;color:blue; padding-top:4px" colspan="2"><label id="RsultTotalAproxes">0</label></td>
+                        </tr>
+
+
+                     
+                        <tr>
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center" id="IdGerenteCargoNotificacion" colspan="2">GERENTE A CARGO</td>
+
+
+                            <td colspan="2">
+
+                                @Html.DropDownListFor(x => x.IdGerenteCargo, new SelectList(ViewBag.listadoGerentes, "UsuarioId", "Nombre"), new { @class = "selectpicker", id = "IdGerenteCargo" })
+
+
+
+                            </td>
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center" id="IdDirectorCargoNotificacion" colspan="2">DIRECTOR A CARGO</td>
+                            <td colspan="2">
+
+
+
+                                @Html.DropDownListFor(x => x.IdDirectorCargo, new SelectList(ViewBag.listadoDirectors, "UsuarioId", "Nombre"), new { @class = "selectpicker", id = "IdDirectorCargo" })
+
+
+
+                            </td>
+
+
+                        </tr>
+                        <tr>
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">VENTAS A CARGO DE</td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2"><input type="text" id="ventaCargo1" class="form-control input-group-lg input-sm" /></td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1">%</td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1"><input type="text"  id="porcentajeCargo1" class="form-control input-group-lg input-sm" /></td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2" rowspan="5"></td>
+
+                        </tr>
+                        <tr>
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">VENTAS A CARGO DE</td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2"><input type="text" id="ventaCargo2"  class="form-control input-group-lg input-sm" /></td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1">%</td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1"><input type="text"  id="porcentajeCargo2" class="form-control input-group-lg input-sm" /></td>
+
+
+                        </tr>
+                        <tr>
+
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2">VENTAS A CARGO DE</td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="2"><input type="text"  id="ventaCargo3" class="form-control input-group-lg input-sm" /></td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1">%</td>
+                            <td style="font-size:12px ;padding-top:15px;text-align:center " colspan="1"><input type="text"  id="porcentajeCargo3" class="form-control input-group-lg input-sm" /></td>
+
+
+                        </tr>
+                        <tr>
+
+                            <td style="font-size:12px ;padding-top:60px;text-align:center" height="25px" colspan="3" rowspan="2">VoBo Gerente General</td>
+
+                            <td style="font-size:12px ;padding-top:60px;text-align:center" height="25px" colspan="3" rowspan="2">VoBo Director Encargado</td>
+
+
+                        </tr>
+                    </table>
+                    <div class="text-right well well-sm">
+                        <button type="button" id="guardarFactura"  class="btn btn-primary">Guardar</button>
+                    </div>
+                }
+                    
+                <div class="modal fade" id="modalFacturas" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Guardar Factura</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="comment">Observaciones:</label>
+                                    <textarea style="min-width: 100%"  class="form-control" rows="5" id="comment"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                             
+                                <button type="button" class="btn btn-primary"  id="guardarFacturaF" >Guardar Factura</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+                <div class="modal fade bs-example-modal-sm" id="ValidacionFactura" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Validación Datos</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Los campos en rojo son obligatorios</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                               
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+                
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+               
+            

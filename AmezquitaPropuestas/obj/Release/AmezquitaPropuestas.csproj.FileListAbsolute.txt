@@ -1,0 +1,130 @@
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\ApplicationInsights.config
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\csc.exe
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\vbc.exe
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\VBCSCompiler.exe
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\AmezquitaPropuestas.dll.config
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\AmezquitaPropuestas.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\AmezquitaPropuestas.pdb
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Entidades.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\EntityFramework.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\EntityFramework.SqlServer.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Helpers.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.Web.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.ApplicationInsights.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\ModelContext.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Newtonsoft.Json.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Rotativa.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Helpers.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Mvc.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Razor.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Webpages.Deployment.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Webpages.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Webpages.Razor.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Entidades.pdb
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Helpers.pdb
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\ModelContext.pdb
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\EntityFramework.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\EntityFramework.SqlServer.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.Web.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.ApplicationInsights.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\Newtonsoft.Json.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Razor.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Webpages.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Webpages.Deployment.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Webpages.Razor.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Helpers.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Mvc.xml
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\es\System.Web.Razor.resources.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\es\System.Web.Webpages.resources.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\es\System.Web.Helpers.resources.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\bin\es\System.Web.Mvc.resources.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\obj\Release\AmezquitaPropuestas.csprojResolveAssemblyReference.cache
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\obj\Release\AmezquitaPropuestas.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\AmezquitaPropuestas\obj\Release\AmezquitaPropuestas.pdb
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\ApplicationInsights.config
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\csc.exe
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\System.Collections.Immutable.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\System.Reflection.Metadata.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\vbc.exe
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\VBCSCompiler.exe
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\roslyn\VBCSCompiler.exe.config
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\AmezquitaPropuestas.dll.config
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\AmezquitaPropuestas.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\AmezquitaPropuestas.pdb
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Entidades.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\EntityFramework.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\EntityFramework.SqlServer.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Helpers.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.Agent.Intercept.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.DependencyCollector.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.Web.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.WindowsServer.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.ApplicationInsights.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.Web.Infrastructure.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\ModelContext.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Newtonsoft.Json.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Rotativa.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Helpers.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Mvc.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Razor.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Webpages.Deployment.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Webpages.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Webpages.Razor.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Entidades.pdb
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Helpers.pdb
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\ModelContext.pdb
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\EntityFramework.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\EntityFramework.SqlServer.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.DependencyCollector.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.Web.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.AI.WindowsServer.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.ApplicationInsights.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\Newtonsoft.Json.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Razor.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Webpages.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Webpages.Deployment.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Webpages.Razor.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Helpers.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\System.Web.Mvc.xml
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\es\System.Web.Razor.resources.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\es\System.Web.Webpages.resources.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\es\System.Web.Webpages.Deployment.resources.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\es\System.Web.Webpages.Razor.resources.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\es\System.Web.Helpers.resources.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\bin\es\System.Web.Mvc.resources.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\obj\Release\AmezquitaPropuestas.csprojResolveAssemblyReference.cache
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\obj\Release\AmezquitaPropuestas.dll
+E:\20_04_17\AmezquitaPropuestas\AmezquitaPropuestas\obj\Release\AmezquitaPropuestas.pdb

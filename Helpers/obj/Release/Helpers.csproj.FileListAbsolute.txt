@@ -1,0 +1,10 @@
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\Helpers\bin\Release\Helpers.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\Helpers\bin\Release\Helpers.pdb
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\Helpers\obj\Release\Helpers.csprojResolveAssemblyReference.cache
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\Helpers\obj\Release\Helpers.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\Helpers\obj\Release\Helpers.pdb
+E:\20_04_17\AmezquitaPropuestas\Helpers\bin\Release\Helpers.dll
+E:\20_04_17\AmezquitaPropuestas\Helpers\bin\Release\Helpers.pdb
+E:\20_04_17\AmezquitaPropuestas\Helpers\obj\Release\Helpers.csprojResolveAssemblyReference.cache
+E:\20_04_17\AmezquitaPropuestas\Helpers\obj\Release\Helpers.dll
+E:\20_04_17\AmezquitaPropuestas\Helpers\obj\Release\Helpers.pdb

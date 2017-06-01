@@ -1,0 +1,384 @@
+﻿@model Entidades.NovedadFacturaPdf
+@{
+    Layout = null;
+    ViewBag.Title = "obtenerFactura";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+
+            .cabezeraS {
+            padding-bottom:30px ;
+
+            }
+            .cabezeraF {
+
+            border:1px solid black;
+            padding:10px;
+            height:800px;
+            }
+
+            .cabezera {
+
+            width:70%;
+            border:1px solid black;
+            float:left;
+            border-right:0;
+
+
+            }
+            .cabezera2
+            {
+            width:30%;
+            border:1px solid black;
+            float:left;
+            padding:10px;
+            padding-left:50px;
+              
+
+            }
+            .cabezera3 {
+            
+            padding:10px;
+            text-align:center;
+            border:1px solid black;
+            border-left:0;
+            border-right:0;
+            border-top:0;
+          
+            }
+
+            .cabezera4 {
+           
+            float:left;
+            width:50%;
+            text-align:center;
+            padding:8px;
+            padding-bottom:11px;
+          
+            }
+
+            .cabezera5 {
+           
+            float:left;
+            width:50%;
+            border-left:1px solid black;
+            text-align:center;
+            padding:8px;
+            padding-bottom:11px;
+          
+            }
+            .dilengicimiento0 {
+            margin-top:90px;
+            border:1px solid black;
+            height:400px;
+       
+       
+            }
+            .dilengicimiento1 {
+           
+            padding-left:10px;
+            padding-top:15px;
+            font-size:12px;
+            float:left;
+            width:22%;
+
+       
+            }
+            .dilengicimiento2 {
+           
+
+            border:1px solid black;
+            float:left;
+            margin-top:8px; 
+        
+          
+            text-align :center;
+            padding:4px;
+            width:15%;
+            }
+            .dilengicimiento3 {
+           
+            margin-top:14px; 
+            margin-left:60px; 
+            float:left;
+            font-size:12px;
+            width:25%;
+        
+            }
+
+
+            .dilengicimiento4 {
+           
+            margin-left:10px; 
+            border:1px solid black;
+            float:left;
+            margin-top:8px; 
+          
+            text-align :center;
+            padding:4px;
+            width:30%;
+            }
+            .BarraCliente
+            {
+            margin-top:44px;
+            border:1px solid black;
+            text-align:center;
+            margin-left:2px; 
+            margin-right:2px; 
+            background-color:black;
+            color:white;
+ 
+            }
+
+            .RazonSocial {           
+            padding-left:20px;
+            padding-top:13px;
+            font-size:12px;
+            float:left;
+            width:22%;
+       
+            }
+            .RazonSocial2 
+            { 
+            border:1px solid black;
+            float:left;
+            margin-top:8px; 
+            margin-right:1px; 
+            text-align :center;
+            width:78%;
+            }
+            .Nit {           
+            padding-left:20px;
+            padding-top:13px;
+            font-size:12px;
+            float:left;
+            width:22%;
+            }
+            .nit2 
+            { 
+            border:1px solid black;
+            float:left;
+            margin-top:8px; 
+            margin-right:1px; 
+            text-align :center;
+            width:20%;
+            }
+            .nit3 
+            { 
+      
+            float:left;
+            margin-top:8px; 
+            margin-right:1px; 
+            text-align :center;
+            width:5%;
+            }
+            .nit4 
+            { 
+            border:1px solid black;
+            float:left;
+            margin-top:8px; 
+            margin-right:1px; 
+            text-align :center;
+            width:5%;
+            }
+            .nit5 
+            { 
+ 
+            float:left;
+            margin-top:9px; 
+            margin-right:5px; 
+            margin-left:80px; 
+            text-align :center;
+            width:10%;
+            }
+            .nit6 
+            { 
+            border:1px solid black;
+            float:left;
+            margin-top:8px; 
+            margin-right:1px; 
+            text-align :center;
+            width:28%;
+            }
+            .Cliente 
+            { 
+            border:1px solid black;
+            float:left;
+            margin-top:8px; 
+            margin-right:1px; 
+            text-align :center;
+            width:30%;
+            }
+            .BarraCliente2
+            {
+            margin-top :190px;
+            border:1px solid black;
+            text-align:center;
+            margin-left:2px; 
+            margin-right:2px; 
+            background-color:black;
+            color:white;
+            }
+             .NOMBRESERVICIO
+            { 
+            border:1px solid black;
+            float:left;
+            margin-top:8px; 
+            margin-right:1px; 
+            text-align :center;
+            width:28%;
+            padding:1px;
+            }
+            .SECTOR
+            { 
+      
+            float:left;
+            margin-top:8px; 
+            margin-left:5px;
+            margin-right:1px; 
+            text-align :center;
+            width:10%;
+            }
+             .SECTORM
+            { 
+            border:1px solid black;
+            float:left;
+            margin-top:8px; 
+            margin-right:1px; 
+            text-align :center;
+            width:14%;
+            padding:1px;
+            }
+             .ClientesCa 
+            { 
+ 
+            float:left;
+            margin-top:9px; 
+            margin-right:5px; 
+            margin-left:20px; 
+            text-align :center;
+            width:5%;
+            }
+            .ClientesModelos
+            { 
+            border:1px solid black;
+            float:left;
+            margin-top:8px;
+            margin-left:20px;  
+            margin-right:1px; 
+            text-align :center;
+            width:15%;
+            }
+          
+
+    </style>
+    
+</head>
+<body>
+    <div class="cabezeraF">
+        <div class="">
+            <div class="cabezera">
+                <div class="cabezera3"><b> FORMATO DE CREACION DE CLIENTE Y FACTURACION</b></div>
+                <div class="cabezera4">Fecha de actualizacion:11/03/2016</div>
+                <div class="cabezera5">Version:02</div>
+            </div>
+            <div class="cabezera2">
+                <img src="~/img/12.png" />
+            </div>
+
+        </div>
+
+        <div>
+            <div class="dilengicimiento0">
+                <div>
+                    <div class="dilengicimiento1"><b>FECHA DE DILIGENCIAMINETO</b></div>
+                    <div class="dilengicimiento2">@Model.fechaDiligenciamiento.ToString("dd/MM/yyyy")</div>
+                    <div class="dilengicimiento3"><b>CONSECUTIVO CONTROL DE TIEMPOS</b></div>
+                    <div class="dilengicimiento4">@Model.consecutivoControlTiempos</div>
+                </div>
+                <div>
+                    <div class="BarraCliente"> DATOS DEL CLIENTE </div>
+                </div>
+                <div>
+                    <div class="RazonSocial">RAZON SOCIAL:</div>
+                    <div class="RazonSocial2">@Model.RazonSocial</div>
+                </div>
+                <div>
+                    <div class="Nit">NIT:</div>
+                    <div class="nit2">@Model.Nit</div>
+                    <div class="nit3">-</div>
+                    <div class="nit4">@Model.DV</div>
+                    <div class="nit5">DIRECCIÓN:</div>
+                    <div class="nit6">@Model.Direccion</div>
+                </div>
+                <div>
+                    <div class="RazonSocial">TIPO DE CONTRIBUYENTE:</div>
+                    <div class="RazonSocial2">@Model.TipoContribuyente</div>
+                </div>
+                <div>
+                    <div class="Nit">TELEFONO  :</div>
+                    <div class="Cliente">@Model.Telefono</div>
+
+
+                    <div class="nit5">CELULAR:</div>
+                    <div class="nit6">@Model.Celular</div>
+                </div>
+                <div>
+                    <div class="RazonSocial">CONTACTO CLIENTE</div>
+                    <div class="RazonSocial2">@Model.ContactoCliente</div>
+                </div>
+                <div>
+                    <div class="RazonSocial">E-MAIL CLIENTE</div>
+                    <div class="RazonSocial2">@Model.Email</div>
+                </div>
+                <div>
+                    <div class="BarraCliente2"> DATOS DEL CLIENTE </div>
+                </div>
+                <div>
+                    <div class="Nit">TIPO DE SERVICIO:</div>
+                    <div class="NOMBRESERVICIO">@Model.nombreServicio</div>
+                    <div class="SECTOR">SECTOR</div>
+                    <div class="SECTORM">@Model.Sector</div>
+                    <div class="ClientesCa">CLIENTE</div>
+                    <div class="ClientesModelos">@Model.Cliente</div>
+                </div>
+                <div style="position:absolute ; padding-top:40px">
+                    <div style="width:200px; float:left; padding-left:20px; padding-right:0px; padding-top:5px ; font-size:12px">NUMERO DE CONTRATO:</div>
+                    <div style="float:left; text-align:center; width:670px; border:1px solid black ; padding-left:1px; padding:2px">@Model.Email</div>
+                </div>
+                <div style="position:absolute ; padding-top:72px">
+                    <div style="width:100px; float:left; padding-left:20px; padding-right:0px; padding-top:5px">HONORARIOS</div>
+                    <div style="width:200px; float:left; padding-left:85px; padding-right:0px; font-size:10px; padding-top:8px">VALOR ANUAL SIN IVA</div>
+                    <div style="float:left; text-align:center; width:180px; border:1px solid black ; margin-left:3px; padding-left:3px; padding:2px">@Model.ValorAnualSinIva</div>
+                    <div style="width:200px; float:left; padding-left:85px; padding-right:0px; font-size:10px; padding-top:8px">VALOR ANUAL SIN IVA</div>
+                    <div style="float:left; text-align:center; width:180px; border:1px solid black ; margin-left:3px; padding-left:3px; padding:2px">@Model.ValorAnualSinIva</div>
+                </div>
+                <div style="position:absolute ; padding-top:110px">
+                    <div style="width:100px; float:left; padding-left:20px; padding-right:0px; padding-top:5px">HONORARIOS</div>
+                    <div style="width:200px; float:left; padding-left:85px; padding-right:0px; font-size:10px; padding-top:8px">VALOR ANUAL SIN IVA</div>
+                    <div style="float:left; text-align:center; width:180px; border:1px solid black ; margin-left:3px; padding-left:3px; padding:2px">@Model.ValorAnualSinIva</div>
+                    <div style="width:200px; float:left; padding-left:85px; padding-right:0px; font-size:10px; padding-top:8px">VALOR ANUAL SIN IVA</div>
+                    <div style="float:left; text-align:center; width:180px; border:1px solid black ; margin-left:3px; padding-left:3px; padding:2px">@Model.ValorAnualSinIva</div>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+        <div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\Entidades\bin\Release\Entidades.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\Entidades\bin\Release\Entidades.pdb
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\Entidades\obj\Release\Entidades.dll
+C:\Users\mdiego\Documents\Visual Studio 2015\Projects\AmezquitaPropuestas\Entidades\obj\Release\Entidades.pdb
+E:\20_04_17\AmezquitaPropuestas\Entidades\bin\Release\Entidades.dll
+E:\20_04_17\AmezquitaPropuestas\Entidades\bin\Release\Entidades.pdb
+E:\20_04_17\AmezquitaPropuestas\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache
+E:\20_04_17\AmezquitaPropuestas\Entidades\obj\Release\Entidades.dll
+E:\20_04_17\AmezquitaPropuestas\Entidades\obj\Release\Entidades.pdb
